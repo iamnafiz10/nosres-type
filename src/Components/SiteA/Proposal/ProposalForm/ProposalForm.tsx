@@ -9,23 +9,25 @@ import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
 
 const ProposalForm = () => {
-    const [currentStep, setCurrentStep] = useState(1); // Track the current step
+    const [currentStep, setCurrentStep] = useState<number>(1); // Track the current step
 
     const handleNext = () => {
-        setCurrentStep(currentStep + 1); // Move to the next step
+        setCurrentStep((prevStep) => prevStep + 1); // Move to the next step
     };
 
     const handleBack = () => {
-        setCurrentStep(currentStep - 1); // Move back to the previous step
+        setCurrentStep((prevStep) => prevStep - 1); // Move back to the previous step
     };
 
     // Document Popup
-    const [openDocumentModal, setOpenDocumentModal] = useState(false);
+    const [openDocumentModal, setOpenDocumentModal] = useState<boolean>(false);
+
     // File Upload Function
-    const [selectedDocumentFile, setSelectedDocumentFile] = useState(null);
-    const fileInputDocumentRef = useRef(null);
-    const handleFileDocumentChange = (event) => {
-        const file = event.target.files[0];
+    const [selectedDocumentFile, setSelectedDocumentFile] = useState<File | null>(null);
+    const fileInputDocumentRef = useRef<HTMLInputElement | null>(null);
+
+    const handleFileDocumentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         if (file) {
             setSelectedDocumentFile(file);
         }
@@ -40,10 +42,10 @@ const ProposalForm = () => {
     };
 
     // For Keep Input Value
-    const [formData, setFormData] = useState({}); // State to store form data for all steps
+    const [formData, setFormData] = useState<{ [key: number]: { [key: string]: any } }>({});
 
     // Function to handle changes in form inputs
-    const handleInputChange = (step, fieldName, value) => {
+    const handleInputChange = (step: number, fieldName: string, value: any) => {
         setFormData(prevData => ({
             ...prevData,
             [step]: {
@@ -53,7 +55,8 @@ const ProposalForm = () => {
         }));
     };
 
-    const totalSteps = 6; // Total number of steps
+    const totalSteps: number = 6; // Total number of steps
+
     const handleEdit = () => {
         setCurrentStep(1);
     };
@@ -74,7 +77,6 @@ const ProposalForm = () => {
         setCurrentStep(5);
     };
 
-
     const notify = () => {
         toast.info('✅ Your business proposal has been successfully submitted', {
             position: "top-center",
@@ -86,11 +88,11 @@ const ProposalForm = () => {
             progress: undefined,
             theme: "colored",
         });
-    }
+    };
+
     const handleSubmitButtonClick = () => {
         notify();
     };
-
 
     const notifyDraft = () => {
         toast.info('✅ Draft saved successfully', {
@@ -103,18 +105,18 @@ const ProposalForm = () => {
             progress: undefined,
             theme: "colored",
         });
-    }
+    };
+
     const handleDraftButtonClick = () => {
         notifyDraft();
     };
 
-    // ------------------ Country Select ------------------//
-    const [selectedOptionCountry, setSelectedOptionCountry] = useState('');
-    const [isOptionsVisibleCountry, setIsOptionsVisibleCountry] = useState(false);
+    const [selectedOptionCountry, setSelectedOptionCountry] = useState<string>('');
+    const [isOptionsVisibleCountry, setIsOptionsVisibleCountry] = useState<boolean>(false);
 
-    const selectBoxRefCountry = useRef(null);
+    const selectBoxRefCountry = useRef<HTMLDivElement | null>(null);
 
-    const handleOptionClickCountry = (option) => {
+    const handleOptionClickCountry = (option: string) => {
         setSelectedOptionCountry(option);
         toggleOptionsVisibilityCountry();
     };
@@ -122,9 +124,10 @@ const ProposalForm = () => {
     const toggleOptionsVisibilityCountry = () => {
         setIsOptionsVisibleCountry(!isOptionsVisibleCountry);
     };
+
     useEffect(() => {
-        const handleOutsideClick = (event) => {
-            if (selectBoxRefCountry.current && !selectBoxRefCountry.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefCountry.current && !selectBoxRefCountry.current.contains(event.target as Node)) {
                 setIsOptionsVisibleCountry(false);
             }
         };
@@ -419,7 +422,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Business Description
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='What does your company do?'
                                                       value={formData[currentStep]?.description || ''}
@@ -446,7 +449,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Executive Summary <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Brief overview of your proposal.'
                                                       value={formData[currentStep]?.summary || ''}
@@ -460,7 +463,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Business Opportunity <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Describe the opportunity your proposal presents'
                                                       value={formData[currentStep]?.opportunity || ''}
@@ -474,7 +477,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Market Analysis <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Provide insights into the market and target audience.'
                                                       value={formData[currentStep]?.analysis || ''}
@@ -488,7 +491,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Unique Value Proposition <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Explain what sets your proposal apart from competitors.'
                                                       value={formData[currentStep]?.proposition || ''}
@@ -502,7 +505,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Products/Services Offered <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Detail the products or services you offer'
                                                       value={formData[currentStep]?.offerd || ''}
@@ -516,7 +519,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Revenue Model <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Outline your proposed revenue generation strategy.'
                                                       value={formData[currentStep]?.Rmodel || ''}
@@ -530,7 +533,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Marketing Strategy <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Explain how you plan to promote your products/services.'
                                                       value={formData[currentStep]?.strategy || ''}
@@ -544,7 +547,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Team <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Introduce the key members of your team and their roles.'
                                                       value={formData[currentStep]?.team || ''}
@@ -558,7 +561,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Financial Projections <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Include financial forecasts for the proposed venture.'
                                                       value={formData[currentStep]?.financial || ''}
@@ -572,7 +575,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Timeline <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Provide a timeline for project implementation and milestones.'
                                                       value={formData[currentStep]?.timeline || ''}
@@ -586,7 +589,7 @@ const ProposalForm = () => {
                                             <h4 className="text-[14px]">
                                                 Risks and Mitigation <span className="text-red-500">*</span>
                                             </h4>
-                                            <textarea cols="30" rows="3"
+                                            <textarea cols={30} rows={3}
                                                       className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                                       placeholder='Identify potential risks and how they will be mitigated.'
                                                       value={formData[currentStep]?.mitigation || ''}

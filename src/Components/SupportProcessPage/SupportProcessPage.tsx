@@ -6,12 +6,12 @@ import supportImgTwo from '../../assets/images/support/sp2.svg';
 import supportImgThree from '../../assets/images/support/sp3.svg';
 import supportImgFive from '../../assets/images/support/sp5.svg';
 import {HiChevronRight} from "react-icons/hi2";
-import { HiOutlineChatBubbleLeftRight, HiOutlineEnvelope } from "react-icons/hi2";
+import {HiOutlineChatBubbleLeftRight, HiOutlineEnvelope} from "react-icons/hi2";
 
 const SupportProcessPage = () => {
     const [activeTab, setActiveTab] = useState('createAccount');
 
-    const handleListItemClick = (tabName) => {
+    const handleListItemClick = (tabName: React.SetStateAction<string>) => {
         setActiveTab(tabName);
     };
     // Search Text
@@ -1111,7 +1111,7 @@ const SupportProcessPage = () => {
                             </p>
                             <div className="block sm:flex items-center gap-4 mt-6 pb-10">
                                 <div className="box flex items-center gap-3 bg-white border px-6 py-4 rounded">
-                                    <HiOutlineChatBubbleLeftRight size={60} className="text-gray-300" />
+                                    <HiOutlineChatBubbleLeftRight size={60} className="text-gray-300"/>
                                     <div className="content">
                                         <div className="block sm:flex items-center gap-6">
                                             <h1 className="text-[16px] font-semibold">Forum</h1>
@@ -1125,7 +1125,7 @@ const SupportProcessPage = () => {
 
                                 <div
                                     className="mt-4 sm:mt-0 box flex items-center gap-4 bg-white border px-6 py-4 rounded">
-                                    <HiOutlineEnvelope size={60} className="text-gray-300" />
+                                    <HiOutlineEnvelope size={60} className="text-gray-300"/>
                                     <div className="content">
                                         <h1 className="text-[16px] font-semibold">Contact Us</h1>
                                         <p className="mt-2">

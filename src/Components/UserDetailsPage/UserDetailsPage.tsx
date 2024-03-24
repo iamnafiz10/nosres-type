@@ -1,5 +1,5 @@
 'use client';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, ChangeEvent} from 'react';
 import {HiUserCircle} from "react-icons/hi";
 import {Link} from "react-router-dom";
 import {GoQuestion} from "react-icons/go";
@@ -30,7 +30,7 @@ const UserDetailsPage = () => {
     // Employer Checkbox
     const [isEmployed, setIsEmployed] = useState(false);
 
-    const handleRadioChange = (event) => {
+    const handleRadioChange = (event: { target: { value: string; }; }) => {
         setIsEmployed(event.target.value === "Yes");
     };
 
@@ -40,11 +40,11 @@ const UserDetailsPage = () => {
     // Location change popup
     const [openLocationModal, setOpenLocationModal] = useState(false);
     const [selectedOptionLocation, setSelectedOptionLocation] = useState('');
-    const [isOptionsVisibleLocation, setIsOptionsVisibleLocation] = useState(false);
+    const [isOptionsVisibleLocation, setIsOptionsVisibleLocation] = useState<boolean>(false);
 
-    const selectBoxRefLocation = useRef(null);
+    const selectBoxRefLocation = useRef<HTMLDivElement | null>(null);
 
-    const handleOptionClickLocation = (option) => {
+    const handleOptionClickLocation = (option: React.SetStateAction<string>) => {
         setSelectedOptionLocation(option);
         toggleOptionsVisibilityLocation();
     };
@@ -52,9 +52,10 @@ const UserDetailsPage = () => {
     const toggleOptionsVisibilityLocation = () => {
         setIsOptionsVisibleLocation(!isOptionsVisibleLocation);
     };
+
     useEffect(() => {
-        const handleOutsideClick = (event) => {
-            if (selectBoxRefLocation.current && !selectBoxRefLocation.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefLocation.current && !selectBoxRefLocation.current.contains(event.target as Node)) {
                 setIsOptionsVisibleLocation(false);
             }
         };
@@ -75,11 +76,11 @@ const UserDetailsPage = () => {
     // Education popup
     const [openEducationModal, setOpenEducationModal] = useState(false);
     const [selectedOptionEducation, setSelectedOptionEducation] = useState('');
-    const [isOptionsVisibleEducation, setIsOptionsVisibleEducation] = useState(false);
+    const [isOptionsVisibleEducation, setIsOptionsVisibleEducation] = useState<boolean>(false);
 
-    const selectBoxRefEducation = useRef(null);
+    const selectBoxRefEducation = useRef<HTMLDivElement | null>(null);
 
-    const handleOptionClickEducation = (option) => {
+    const handleOptionClickEducation = (option: React.SetStateAction<string>) => {
         setSelectedOptionEducation(option);
         toggleOptionsVisibilityEducation();
     };
@@ -87,9 +88,10 @@ const UserDetailsPage = () => {
     const toggleOptionsVisibilityEducation = () => {
         setIsOptionsVisibleEducation(!isOptionsVisibleEducation);
     };
+
     useEffect(() => {
-        const handleOutsideClick = (event) => {
-            if (selectBoxRefEducation.current && !selectBoxRefEducation.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefEducation.current && !selectBoxRefEducation.current.contains(event.target as Node)) {
                 setIsOptionsVisibleEducation(false);
             }
         };
@@ -103,11 +105,10 @@ const UserDetailsPage = () => {
 
     // ----------- Status Select
     const [selectedOptionStatus, setSelectedOptionStatus] = useState('');
-    const [isOptionsVisibleStatus, setIsOptionsVisibleStatus] = useState(false);
+    const [isOptionsVisibleStatus, setIsOptionsVisibleStatus] = useState<boolean>(false);
+    const selectBoxRefStatus = useRef<HTMLDivElement | null>(null);
 
-    const selectBoxRefStatus = useRef(null);
-
-    const handleOptionClickStatus = (option) => {
+    const handleOptionClickStatus = (option: React.SetStateAction<string>) => {
         setSelectedOptionStatus(option);
         toggleOptionsVisibilityStatus();
     };
@@ -115,9 +116,10 @@ const UserDetailsPage = () => {
     const toggleOptionsVisibilityStatus = () => {
         setIsOptionsVisibleStatus(!isOptionsVisibleStatus);
     };
+
     useEffect(() => {
-        const handleOutsideClick = (event) => {
-            if (selectBoxRefStatus.current && !selectBoxRefStatus.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefStatus.current && !selectBoxRefStatus.current.contains(event.target as Node)) {
                 setIsOptionsVisibleStatus(false);
             }
         };
@@ -138,13 +140,11 @@ const UserDetailsPage = () => {
     // Resume Popup
     const [openResumeModal, setOpenResumeModal] = useState(false);
     // File Upload Function
-    const [selectedFile, setSelectedFile] = useState(null);
-    const fileInputRef = useRef(null);
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setSelectedFile(file);
-        }
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        setSelectedFile(file || null);
     };
 
     const handleRemoveClick = () => {
@@ -159,11 +159,12 @@ const UserDetailsPage = () => {
     // Document Popup
     const [openDocumentModal, setOpenDocumentModal] = useState(false);
     // File Upload Function
-    const [selectedDocumentFile, setSelectedDocumentFile] = useState(null);
-    const fileInputDocumentRef = useRef(null);
-    const handleFileDocumentChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
+    const [selectedDocumentFile, setSelectedDocumentFile] = useState<File | null>(null);
+    const fileInputDocumentRef = useRef<HTMLInputElement>(null);
+    const handleFileDocumentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
             setSelectedDocumentFile(file);
         }
     };
@@ -908,7 +909,7 @@ const UserDetailsPage = () => {
                                                     Please list your skills, separated by commas (optional).
                                                 </p>
                                                 <h4 className="text-[14px] mt-4">Add Skills</h4>
-                                                <textarea cols="30" rows="3"
+                                                <textarea cols={30} rows={3}
                                                           className="mt-1 border border-gray-300 rounded w-full py-1 px-3 focus:ring focus:ring-transparent text-[#ABABAB] text-[12px] focus:outline-none"></textarea>
                                             </div>
                                         </Modal.Body>
@@ -994,11 +995,13 @@ const UserDetailsPage = () => {
                                                                     Supported file formats: .pdf, .doc, .docx, .txt
                                                                 </p>
                                                             </div>
-                                                            <input id="dropzone-file" type="file"
-                                                                   accept=".pdf,.doc,.docx,.txt"
-                                                                   className="hidden"
-                                                                   onChange={handleFileChange}
-                                                                   ref={fileInputRef}
+                                                            <input
+                                                                id="dropzone-file"
+                                                                type="file"
+                                                                accept=".pdf,.doc,.docx,.txt"
+                                                                className="hidden"
+                                                                onChange={handleFileChange}
+                                                                ref={fileInputRef}
                                                             />
                                                         </label>
                                                     </div>
@@ -1090,7 +1093,7 @@ const UserDetailsPage = () => {
                                                             <input id="dropzone-file" type="file"
                                                                    accept=".pdf,.doc,.docx,.txt"
                                                                    className="hidden"
-                                                                   onChange={handleFileDocumentChange}
+                                                                   onChange={(event) => handleFileDocumentChange(event)}
                                                                    ref={fileInputDocumentRef}
                                                             />
                                                         </label>

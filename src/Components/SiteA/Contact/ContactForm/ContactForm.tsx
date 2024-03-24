@@ -66,7 +66,7 @@ const ContactForm = () => {
 
                                 <div className="block mt-4">
                                     <label htmlFor="name" className="text-[14px]">MESSAGE</label>
-                                    <textarea cols="30" rows="3"
+                                    <textarea cols={30} rows={3}
                                               className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] border border-gray-400 shadow-none focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                               placeholder='Write message'
                                     ></textarea>
