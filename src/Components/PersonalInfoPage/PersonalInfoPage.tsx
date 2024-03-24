@@ -1,9 +1,8 @@
-'use client';
 import React, {useState, useRef, useEffect} from 'react';
-import {HiOutlineMenuAlt2, HiUserCircle} from "react-icons/hi";
-import {Link} from "react-router-dom";
-import LogoImg from "../../assets/images/logo.svg";
-import {GoQuestion} from "react-icons/go";
+import {HiOutlineMenuAlt2, HiUserCircle} from 'react-icons/hi';
+import {Link} from 'react-router-dom';
+import LogoImg from '../../assets/images/logo.svg';
+import {GoQuestion} from 'react-icons/go';
 import {Modal} from 'flowbite-react';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,44 +18,44 @@ import {
     HiOutlineMinusCircle,
     HiOutlineCamera,
     HiOutlinePlusCircle,
-    HiOutlineCloudArrowUp
-} from "react-icons/hi2";
+    HiOutlineCloudArrowUp,
+} from 'react-icons/hi2';
 
-function PersonalInfoPage() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+const PersonalInfoPage = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     const toggleSidebar = () => {
-        setIsMenuOpen((prev) => !prev);
+        setIsMenuOpen((prev: boolean) => !prev);
     };
 
     // 👇️ Toggle class on click Show And Hide Account (Icon)
-    const [isAccountVisible, setAccountVisible] = useState(false);
+    const [isAccountVisible, setAccountVisible] = useState<boolean>(false);
     const handleAccountClick = () => {
-        const account = document.getElementById('account_da_dropdown_menu');
+        const account: HTMLElement | null = document.getElementById('account_da_dropdown_menu');
         if (account) {
             if (isAccountVisible) {
                 account.classList.remove('show-account-da-dropdown-menu');
             } else {
                 account.classList.add('show-account-da-dropdown-menu');
             }
-            setAccountVisible(!isAccountVisible);
+            setAccountVisible((prev: boolean) => !prev);
         }
     };
 
-    const currentYear = new Date().getFullYear();
+    const currentYear: number = new Date().getFullYear();
 
     // Image Upload Function
-    const [selectedFile, setSelectedFile] = useState(null);
-    const fileInputRef = useRef(null);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     // Profile image change popup
-    const [openProfileImageModal, setOpenProfileImageModal] = useState(false);
+    const [openProfileImageModal, setOpenProfileImageModal] = useState<boolean>(false);
 
-
-    const handleFileChange = (event: { target: { files: any[]; }; }) => {
-        const file = event.target.files[0];
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file: File | null = event.target.files?.[0] || null;
         setSelectedFile(file);
     };
+
     const handleRemoveClick = () => {
         setSelectedFile(null);
         // Reset the file input value to allow re-uploading the same file
@@ -75,12 +74,13 @@ function PersonalInfoPage() {
         setOpenProfileImageModal(false);
     };
 
-    // For Username Type
-    const constantPart = "auth.nosres.com/@";
-    const [inputValue, setInputValue] = useState('');
 
-    const handleInputChange = (e: { target: { value: any; }; }) => {
-        const userInput = e.target.value;
+// For Username Type
+    const constantPart: string = "auth.nosres.com/@";
+    const [inputValue, setInputValue] = useState<string>('');
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const userInput: string = e.target.value;
 
         // Check if the user's input already includes the constant part
         if (userInput.startsWith(constantPart)) {
@@ -90,20 +90,21 @@ function PersonalInfoPage() {
         }
     };
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         // Handle backspace to prevent repetition
         if (e.key === 'Backspace' && inputValue === constantPart) {
             e.preventDefault(); // Prevent backspace from removing the constant part
         }
     };
 
-    // ------------------ One ------------------//
-    const [selectedOptionOne, setSelectedOptionOne] = useState('');
-    const [isOptionsVisibleOne, setIsOptionsVisibleOne] = useState(false);
 
-    const selectBoxRef = useRef(null);
+// ------------------ One ------------------//
+    const [selectedOptionOne, setSelectedOptionOne] = useState<string>('');
+    const [isOptionsVisibleOne, setIsOptionsVisibleOne] = useState<boolean>(false);
 
-    const handleOptionClickOne = (option: React.SetStateAction<string>) => {
+    const selectBoxRef = useRef<HTMLDivElement>(null);
+
+    const handleOptionClickOne = (option: string) => {
         setSelectedOptionOne(option);
         toggleOptionsVisibilityOne();
     };
@@ -112,8 +113,8 @@ function PersonalInfoPage() {
         setIsOptionsVisibleOne(!isOptionsVisibleOne);
     };
     useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            if (selectBoxRef.current && !selectBoxRef.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRef.current && !selectBoxRef.current.contains(event.target as Node)) {
                 setIsOptionsVisibleOne(false);
             }
         };
@@ -125,49 +126,35 @@ function PersonalInfoPage() {
         };
     }, []);
 
-    // ------------------ Two ------------------//
-    const [selectedOptionTwo, setSelectedOptionTwo] = useState('');
-    const [isOptionsVisibleTwo, setIsOptionsVisibleTwo] = useState(false);
-
-    const selectBoxRefTwo = useRef(null);
-
-    const handleOptionClickTwo = (option: React.SetStateAction<string>) => {
-        setSelectedOptionTwo(option);
-        toggleOptionsVisibilityTwo();
-    };
+// ------------------ Two ------------------//
+    const [selectedOptionTwo, setSelectedOptionTwo] = useState<string>('');
+    const [isOptionsVisibleTwo, setIsOptionsVisibleTwo] = useState<boolean>(false);
+    const selectBoxRefTwo = useRef<HTMLDivElement>(null);
 
     const toggleOptionsVisibilityTwo = () => {
         setIsOptionsVisibleTwo(!isOptionsVisibleTwo);
     };
-    useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            if (selectBoxRefTwo.current && !selectBoxRefTwo.current.contains(event.target)) {
-                setIsOptionsVisibleTwo(false);
-            }
-        };
 
-        document.addEventListener('click', handleOutsideClick);
+    const handleOptionClickTwo = (day: number) => {
+        setSelectedOptionTwo(String(day));
+        toggleOptionsVisibilityTwo();
+    };
 
-        return () => {
-            document.removeEventListener('click', handleOutsideClick);
-        };
-    }, []);
+// ------------------ Three ------------------//
+    const [selectedOptionThree, setSelectedOptionThree] = useState<string>('');
+    const [isOptionsVisibleThree, setIsOptionsVisibleThree] = useState<boolean>(false);
 
-    // ------------------ Three ------------------//
-    const [selectedOptionThree, setSelectedOptionThree] = useState('');
-    const [isOptionsVisibleThree, setIsOptionsVisibleThree] = useState(false);
+    const selectBoxRefThree = useRef<HTMLDivElement>(null);
 
-    const selectBoxRefThree = useRef(null);
-
-    const handleOptionClickThree = (option: React.SetStateAction<string>) => {
+    const handleOptionClickThree = (option: string) => {
         setSelectedOptionThree(option);
         toggleOptionsVisibilityThree();
     };
 
-    // For Birthday Year
-    const startYear = 1900;
-    const endYear = 2024;
-    const yearOptions = [];
+// For Birthday Year
+    const startYear: number = 1900;
+    const endYear: number = 2024;
+    const yearOptions: JSX.Element[] = [];
 
     for (let year = startYear; year <= endYear; year++) {
         yearOptions.push(
@@ -177,16 +164,16 @@ function PersonalInfoPage() {
         );
     }
 
-    // For Birthday Date and Month
-    const monthLengths = {
+// For Birthday Date and Month
+    const monthLengths: { [key: string]: number } = {
         January: 31, February: 29, March: 31, April: 30,
         May: 31, June: 30, July: 31, August: 31,
         September: 30, October: 31, November: 30, December: 31
     }
 
-    const [selectedMonth, setSelectedMonth] = useState('January');
+    const [selectedMonth, setSelectedMonth] = useState<string>('January');
 
-    const handleMonthSelect = (month: React.SetStateAction<string>) => {
+    const handleMonthSelect = (month: string) => {
         setSelectedMonth(month);
     };
 
@@ -194,8 +181,8 @@ function PersonalInfoPage() {
         setIsOptionsVisibleThree(!isOptionsVisibleThree);
     };
     useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            if (selectBoxRefThree.current && !selectBoxRefThree.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefThree.current && !selectBoxRefThree.current.contains(event.target as Node)) {
                 setIsOptionsVisibleThree(false);
             }
         };
@@ -207,13 +194,13 @@ function PersonalInfoPage() {
         };
     }, []);
 
-    // ------------------ Gender Select ------------------//
-    const [selectedOptionGender, setSelectedOptionGender] = useState('');
-    const [isOptionsVisibleGender, setIsOptionsVisibleGender] = useState(false);
+// ------------------ Gender Select ------------------//
+    const [selectedOptionGender, setSelectedOptionGender] = useState<string>('');
+    const [isOptionsVisibleGender, setIsOptionsVisibleGender] = useState<boolean>(false);
 
-    const selectBoxRefGender = useRef(null);
+    const selectBoxRefGender = useRef<HTMLDivElement>(null);
 
-    const handleOptionClickGender = (option: React.SetStateAction<string>) => {
+    const handleOptionClickGender = (option: string) => {
         setSelectedOptionGender(option);
         toggleOptionsVisibilityGender();
     };
@@ -222,8 +209,8 @@ function PersonalInfoPage() {
         setIsOptionsVisibleGender(!isOptionsVisibleGender);
     };
     useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            if (selectBoxRefGender.current && !selectBoxRefGender.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefGender.current && !selectBoxRefGender.current.contains(event.target as Node)) {
                 setIsOptionsVisibleGender(false);
             }
         };
@@ -235,13 +222,13 @@ function PersonalInfoPage() {
         };
     }, []);
 
-    // ------------------ Country Select ------------------//
-    const [selectedOptionCountry, setSelectedOptionCountry] = useState('');
-    const [isOptionsVisibleCountry, setIsOptionsVisibleCountry] = useState(false);
+// ------------------ Country Select ------------------//
+    const [selectedOptionCountry, setSelectedOptionCountry] = useState<string>('');
+    const [isOptionsVisibleCountry, setIsOptionsVisibleCountry] = useState<boolean>(false);
 
-    const selectBoxRefCountry = useRef(null);
+    const selectBoxRefCountry = useRef<HTMLDivElement>(null);
 
-    const handleOptionClickCountry = (option: React.SetStateAction<string>) => {
+    const handleOptionClickCountry = (option: string) => {
         setSelectedOptionCountry(option);
         toggleOptionsVisibilityCountry();
     };
@@ -250,8 +237,8 @@ function PersonalInfoPage() {
         setIsOptionsVisibleCountry(!isOptionsVisibleCountry);
     };
     useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            if (selectBoxRefCountry.current && !selectBoxRefCountry.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefCountry.current && !selectBoxRefCountry.current.contains(event.target as Node)) {
                 setIsOptionsVisibleCountry(false);
             }
         };
@@ -264,13 +251,13 @@ function PersonalInfoPage() {
     }, []);
 
 
-    // ------------------ Language Select ------------------//
-    const [selectedOptionLanguage, setSelectedOptionLanguage] = useState('');
-    const [isOptionsVisibleLanguage, setIsOptionsVisibleLanguage] = useState(false);
+// ------------------ Language Select ------------------//
+    const [selectedOptionLanguage, setSelectedOptionLanguage] = useState<string>('');
+    const [isOptionsVisibleLanguage, setIsOptionsVisibleLanguage] = useState<boolean>(false);
 
-    const selectBoxRefLanguage = useRef(null);
+    const selectBoxRefLanguage = useRef<HTMLDivElement>(null);
 
-    const handleOptionClickLanguage = (option: React.SetStateAction<string>) => {
+    const handleOptionClickLanguage = (option: string) => {
         setSelectedOptionLanguage(option);
         toggleOptionsVisibilityLanguage();
     };
@@ -279,8 +266,8 @@ function PersonalInfoPage() {
         setIsOptionsVisibleLanguage(!isOptionsVisibleLanguage);
     };
     useEffect(() => {
-        const handleOutsideClick = (event: { target: any; }) => {
-            if (selectBoxRefLanguage.current && !selectBoxRefLanguage.current.contains(event.target)) {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (selectBoxRefLanguage.current && !selectBoxRefLanguage.current.contains(event.target as Node)) {
                 setIsOptionsVisibleLanguage(false);
             }
         };
@@ -292,36 +279,38 @@ function PersonalInfoPage() {
         };
     }, []);
 
-    // Name change popup
-    const [openNameModal, setOpenNameModal] = useState(false);
+// Name change popup
+    const [openNameModal, setOpenNameModal] = useState<boolean>(false);
 
-    // Username change popup
-    const [openUsernameModal, setOpenUsernameModal] = useState(false);
+// Username change popup
+    const [openUsernameModal, setOpenUsernameModal] = useState<boolean>(false);
 
-    // Birthday change popup
-    const [openBirthdayModal, setOpenBirthdayModal] = useState(false);
+// Birthday change popup
+    const [openBirthdayModal, setOpenBirthdayModal] = useState<boolean>(false);
 
-    // Gender change popup
-    const [openGenderModal, setOpenGenderModal] = useState(false);
+// Gender change popup
+    const [openGenderModal, setOpenGenderModal] = useState<boolean>(false);
 
-    // Country change popup
-    const [openCountryModal, setOpenCountryModal] = useState(false);
+// Country change popup
+    const [openCountryModal, setOpenCountryModal] = useState<boolean>(false);
 
-    // Language change popup
-    const [openLanguageModal, setOpenLanguageModal] = useState(false);
+// Language change popup
+    const [openLanguageModal, setOpenLanguageModal] = useState<boolean>(false);
 
-    // --------------------- Email change popup START -----------------------//
-    const [openEmailModal, setOpenEmailModal] = useState(false);
-    const [openAddEmailModal, setOpenAddEmailModal] = useState(false);
-    const [openEmailPasswordModal, setOpenEmailPasswordModal] = useState(false);
-    const [openConfirmEmailModal, setOpenConfirmEmailModal] = useState(false);
-    // Function to close all Email popups
+// --------------------- Email change popup START -----------------------//
+    const [openEmailModal, setOpenEmailModal] = useState<boolean>(false);
+    const [openAddEmailModal, setOpenAddEmailModal] = useState<boolean>(false);
+    const [openEmailPasswordModal, setOpenEmailPasswordModal] = useState<boolean>(false);
+    const [openConfirmEmailModal, setOpenConfirmEmailModal] = useState<boolean>(false);
+
+// Function to close all Email popups
     const closeAllEmailPopups = () => {
         setOpenEmailModal(false);
         setOpenAddEmailModal(false);
         setOpenEmailPasswordModal(false);
         setOpenConfirmEmailModal(false);
     };
+
     const notify = () => {
         toast.info('✅ Your email has been verified', {
             position: "top-center",
@@ -333,27 +322,29 @@ function PersonalInfoPage() {
             progress: undefined,
             theme: "colored",
         });
-    }
+    };
+
     const handleConfirmPopEmailButtonClick = () => {
         notify();
         closeAllEmailPopups();
     };
 
-    // --------------------- Email change popup END -----------------------//
+// --------------------- Email change popup END -----------------------//
 
+// --------------------- Phone change popup START -----------------------//
+    const [openPhoneModal, setOpenPhoneModal] = useState<boolean>(false);
+    const [openAddPhoneModal, setOpenAddPhoneModal] = useState<boolean>(false);
+    const [openPhoneVModal, setOpenPhoneVModal] = useState<boolean>(false);
+    const [openConfirmVCodePhoneModal, setOpenConfirmVCodePhoneModal] = useState<boolean>(false);
 
-    // --------------------- Phone change popup START -----------------------//
-    const [openPhoneModal, setOpenPhoneModal] = useState(false);
-    const [openAddPhoneModal, setOpenAddPhoneModal] = useState(false);
-    const [openPhoneVModal, setOpenPhoneVModal] = useState(false);
-    const [openConfirmVCodePhoneModal, setOpenConfirmVCodePhoneModal] = useState(false);
-    // Function to close all Email popups
+// Function to close all Phone popups
     const closeAllPhonePopups = () => {
         setOpenPhoneModal(false);
         setOpenAddPhoneModal(false);
         setOpenPhoneVModal(false);
         setOpenConfirmVCodePhoneModal(false);
     };
+
     const notifyP = () => {
         toast.info('✅ Your phone has been verified', {
             position: "top-center",
@@ -365,13 +356,13 @@ function PersonalInfoPage() {
             progress: undefined,
             theme: "colored",
         });
-    }
+    };
+
     const handleConfirmPopPhoneButtonClick = () => {
         notifyP();
         closeAllPhonePopups();
     };
-    // --------------------- Phone change popup END -----------------------//
-
+// --------------------- Phone change popup END -----------------------//
     return (
         <>
             <section id="dashboard-section" className="bg-[#F9FAFB]">
@@ -628,7 +619,7 @@ function PersonalInfoPage() {
                                                         JPG or GIF (MAX. 800x400px)</p>
                                                 </div>
                                                 <input id="dropzone-file" type="file" className="hidden"
-                                                       onChange={(event)=>handleFileChange(event)}
+                                                       onChange={(event) => handleFileChange(event)}
                                                        ref={fileInputRef}
                                                 />
                                             </label>
@@ -808,17 +799,22 @@ function PersonalInfoPage() {
                                                 <div className="select-box mt-2" ref={selectBoxRefTwo}>
                                                     <div className="select-option flex"
                                                          onClick={toggleOptionsVisibilityTwo}>
-                                                        <input type="text" placeholder="Day"
-                                                               readOnly
-                                                               value={selectedOptionTwo}
-                                                               className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300 "/>
+                                                        <input
+                                                            type="text"
+                                                            placeholder="Day"
+                                                            readOnly
+                                                            value={selectedOptionTwo}
+                                                            className="focus:ring focus:ring-transparent focus:outline-none focus:border-gray-300"
+                                                        />
                                                     </div>
                                                     {isOptionsVisibleTwo && (
                                                         <div className="info-content">
                                                             <ul className="options">
-                                                                {[...Array(monthLengths[selectedMonth]).keys()].map((day) => (
+                                                                {Array.from(Array(monthLengths[selectedMonth]).keys()).map((day) => (
                                                                     <li key={day + 1}
-                                                                        onClick={() => handleOptionClickTwo(day + 1)}>{day + 1}</li>
+                                                                        onClick={() => handleOptionClickTwo(day + 1)}>
+                                                                        {day + 1}
+                                                                    </li>
                                                                 ))}
                                                             </ul>
                                                         </div>

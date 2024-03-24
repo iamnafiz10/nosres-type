@@ -10,7 +10,7 @@ import {HiArrowLongLeft, HiArrowLongRight} from "react-icons/hi2";
 const BlogCat = () => {
     const [activeTab, setActiveTab] = useState('all');
 
-    const handleTabClick = (tab) => {
+    const handleTabClick = (tab: React.SetStateAction<string>) => {
         setActiveTab(tab);
     };
     return (
@@ -73,17 +73,17 @@ const BlogCat = () => {
 
                     <div className="tag_area pl-3 flex items-center gap-4">
                         <h4 className="text-[14px]">Tags</h4>
-                        <button type="type"
+                        <button type="button"
                                 className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
                             Business
                         </button>
 
-                        <button type="type"
+                        <button type="button"
                                 className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
                             Startup
                         </button>
 
-                        <button type="type"
+                        <button type="button"
                                 className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
                             Another Tag
                         </button>
@@ -93,7 +93,8 @@ const BlogCat = () => {
                     <div className="all_content_wrapper gap-8 mt-12">
                         {activeTab === 'all' && (
                             <div className="all_tab_content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg1} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -112,7 +113,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg2} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -131,7 +133,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg3} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -150,7 +153,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg3} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -169,7 +173,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg3} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -188,7 +193,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg3} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -211,7 +217,8 @@ const BlogCat = () => {
                         {activeTab === 'marketplace' && (
                             <div
                                 className="marketplace_tab_content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg2} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -230,7 +237,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg2} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -249,7 +257,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg3} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -272,7 +281,8 @@ const BlogCat = () => {
                         {activeTab === 'newsroom' && (
                             <div
                                 className="marketplace_tab_content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg1} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
@@ -291,7 +301,8 @@ const BlogCat = () => {
                                     </div>
                                 </div>
 
-                                <div data-aos="zoom-in" data-aos-duration="500" className="col image-box bg-white shadow rounded-md">
+                                <div data-aos="zoom-in" data-aos-duration="500"
+                                     className="col image-box bg-white shadow rounded-md">
                                     <img src={blogImg2} className="w-full h-52 rounded-md rounded-b-none"
                                          alt="blogImg"/>
                                     <div className="content px-4 py-4">
