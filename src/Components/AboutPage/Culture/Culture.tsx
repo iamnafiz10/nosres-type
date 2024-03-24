@@ -7,7 +7,7 @@ function Culture() {
         <>
             <section id="culture-section" className="mt-8 bg-[#F4F4F4]">
                 <div className="container py-12">
-                    <div className="head-wrap">
+                    <div className="head-wraps">
                         <h1 className="font-semibold text-[24px]">
                             Nosres Culture
                         </h1>
