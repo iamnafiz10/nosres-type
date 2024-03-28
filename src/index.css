@@ -184,7 +184,7 @@ textarea {
 .modal_body input {
     outline: none !important;
     border: 1px solid #a1a1a1db;
-    background: #fafafaba !important;
+    background: #fafafaba;
     color: #39393B !important;
 }
 
