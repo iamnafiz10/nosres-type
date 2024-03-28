@@ -73,7 +73,7 @@ h2 {
 }
 
 input {
-    background: #fafafaba !important;
+    background: #fafafaba;
     border: 1px solid #a1a1a1db;
     outline: none !important;
     color: #39393B !important;
