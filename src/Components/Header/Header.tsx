@@ -638,7 +638,7 @@ function Header() {
                                 ref={mobileInputRef}
                                 type="text"
                                 className={`border text-[14px] border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isMobileSearchExpanded ? 'w-full' : 'w-full'}`}
-                                placeholder="Search"
+                                placeholder="Search nosres.com"
                                 value={mobileSearchText}
                                 onChange={handleMobileChange}
                                 onFocus={handleMobileSearchExpandedClick}
@@ -662,9 +662,9 @@ function Header() {
                                             <div className="left flex items-center gap-1">
                                                 <CiClock2 size={20} className="text-primary"/>
                                                 <div className="text">
-                                                    <h2 className="text-[#252C32] font-semibold text-[14px]">
+                                                    <h4 className="text-[#252C32] font-semibold text-[16px]">
                                                         Recent Searches
-                                                    </h2>
+                                                    </h4>
                                                 </div>
                                             </div>
                                             <div className="right">
