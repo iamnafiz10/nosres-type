@@ -251,7 +251,7 @@ function Header() {
                             </div>
 
                             <div
-                                className="set_input_under_right absolute right-0  inset-y-0 flex items-center cursor-pointer"
+                                className={`set_input_under_right absolute right-0 inset-y-0 flex items-center cursor-pointer ${searchText.length > 0 ? 'opacity-100' : 'opacity-0'}`}
                                 onClick={handleClearText}
                             >
                                 <svg
@@ -668,7 +668,8 @@ function Header() {
                                                 </div>
                                             </div>
                                             <div className="right">
-                                                <button type='button' className="text-[14px] text-primary">Clear
+                                                <button type='button' className="text-[14px] text-primary">
+                                                    Clear
                                                 </button>
                                             </div>
                                         </div>
@@ -693,7 +694,7 @@ function Header() {
                             </div>
 
                             <div
-                                className="set_input_under_right absolute right-0 inset-y-0 flex items-center cursor-pointer"
+                                className={`set_input_under_right absolute right-0 inset-y-0 flex items-center cursor-pointer ${mobileSearchText.length > 0 ? 'opacity-100' : 'opacity-0'}`}
                                 onClick={handleMobileClearText}
                             >
                                 <svg
@@ -711,56 +712,10 @@ function Header() {
                                     />
                                 </svg>
                             </div>
+
                             {isMobileSearchExpanded &&
                                 <div className="overlay-blur" onClick={handleMobileInputBlur}></div>}
                         </div>
-                        {/*<div className="m-4 search-bar flex lg:hidden relative">*/}
-                        {/*    <input*/}
-                        {/*        type="text"*/}
-                        {/*        className="border w-full text-[14px] border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0"*/}
-                        {/*        placeholder="Search nosres.com"*/}
-                        {/*        value={searchText}*/}
-                        {/*        onChange={(e) => setSearchText(e.target.value)}*/}
-                        {/*    />*/}
-
-                        {/*    {searchText && (*/}
-                        {/*        <div*/}
-                        {/*            className="absolute right-0 inset-y-0 flex items-center cursor-pointer"*/}
-                        {/*            onClick={handleClearText}*/}
-                        {/*        >*/}
-                        {/*            <svg*/}
-                        {/*                xmlns="http://www.w3.org/2000/svg"*/}
-                        {/*                className="-ml-1 mr-3 h-4 w-4 text-gray-400 hover:text-gray-500"*/}
-                        {/*                fill="none"*/}
-                        {/*                viewBox="0 0 24 24"*/}
-                        {/*                stroke="currentColor"*/}
-                        {/*            >*/}
-                        {/*                <path*/}
-                        {/*                    strokeLinecap="round"*/}
-                        {/*                    strokeLinejoin="round"*/}
-                        {/*                    strokeWidth="2"*/}
-                        {/*                    d="M6 18L18 6M6 6l12 12"*/}
-                        {/*                />*/}
-                        {/*            </svg>*/}
-                        {/*        </div>*/}
-                        {/*    )}*/}
-                        {/*    <div className="absolute left-0 inset-y-0 flex items-center">*/}
-                        {/*        <svg*/}
-                        {/*            xmlns="http://www.w3.org/2000/svg"*/}
-                        {/*            className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500"*/}
-                        {/*            fill="none"*/}
-                        {/*            viewBox="0 0 24 24"*/}
-                        {/*            stroke="currentColor"*/}
-                        {/*        >*/}
-                        {/*            <path*/}
-                        {/*                strokeLinecap="round"*/}
-                        {/*                strokeLinejoin="round"*/}
-                        {/*                strokeWidth="2"*/}
-                        {/*                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"*/}
-                        {/*            />*/}
-                        {/*        </svg>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
 
                         <details className="group pb-0 p-4">
                             <summary
