@@ -10,7 +10,7 @@ const SitemapPage = () => {
                     <div className="hidden lg:grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                         <div className="col mt-3">
                             <h3 className="font-semibold text-gray-600">Nosres Inc.</h3>
-                            <ul className="mt-3 space-y-2 text-gray-500 text-[12px]">
+                            <ul className="mt-3 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>About Nosres</Link>
                                 </li>
@@ -34,7 +34,7 @@ const SitemapPage = () => {
 
                         <div className="col mt-3">
                             <h3 className="font-semibold text-gray-600">Business Portfolio</h3>
-                            <ul className="mt-3 space-y-2 text-gray-500 text-[12px]">
+                            <ul className="mt-3 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Marketplace</Link>
                                 </li>
@@ -52,7 +52,7 @@ const SitemapPage = () => {
 
                         <div className="col mt-3">
                             <h3 className="font-semibold text-gray-600">Resources</h3>
-                            <ul className="mt-3 space-y-2 text-gray-500 text-[12px]">
+                            <ul className="mt-3 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Support Center</Link>
                                 </li>
@@ -79,7 +79,7 @@ const SitemapPage = () => {
 
                         <div className="col mt-3">
                             <h3 className="font-semibold text-gray-600">Community</h3>
-                            <ul className="mt-3 space-y-2 text-gray-500 text-[12px]">
+                            <ul className="mt-3 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Events</Link>
                                 </li>
@@ -100,7 +100,7 @@ const SitemapPage = () => {
 
                         <div className="col mt-3">
                             <h3 className="font-semibold text-gray-600">Account</h3>
-                            <ul className="mt-3 space-y-2 text-gray-500 text-[12px]">
+                            <ul className="mt-3 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Manage Your Nosres Account</Link>
                                 </li>
@@ -112,15 +112,13 @@ const SitemapPage = () => {
                     </div>
 
                     {/* Mobile Sitemap */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:hidden">
-                        <details className="group pt-0 sm:pt-8">
-                            <summary
-                                className="relative border-b border-b-[#ABABAB] pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
+                        <div className="group pt-0 sm:pt-2">
+                            <div
+                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Nosres Inc.
-                                <RxPlus
-                                    className="absolute right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:rotate-90"/>
-                            </summary>
-                            <ul className="mt-4 space-y-2 text-gray-500 text-[12px]">
+                            </div>
+                            <ul className="mt-0 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>About Nosres</Link>
                                 </li>
@@ -140,16 +138,14 @@ const SitemapPage = () => {
                                     <Link to='/'>Contact Us</Link>
                                 </li>
                             </ul>
-                        </details>
+                        </div>
 
-                        <details className="group pt-0 sm:pt-8">
-                            <summary
-                                className="relative border-b border-b-[#ABABAB] pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                        <div className="group pt-0 sm:pt-2">
+                            <div
+                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Business Portfolio
-                                <RxPlus
-                                    className="absolute right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:rotate-90"/>
-                            </summary>
-                            <ul className="mt-4 space-y-2 text-gray-500 text-[12px]">
+                            </div>
+                            <ul className="mt-0 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Marketplace</Link>
                                 </li>
@@ -163,16 +159,14 @@ const SitemapPage = () => {
                                     <Link to='/'>Telecom</Link>
                                 </li>
                             </ul>
-                        </details>
+                        </div>
 
-                        <details className="group pt-0 sm:pt-8">
-                            <summary
-                                className="relative border-b border-b-[#ABABAB] pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                        <div className="group pt-0 sm:pt-2">
+                            <div
+                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Resources
-                                <RxPlus
-                                    className="absolute right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:rotate-90"/>
-                            </summary>
-                            <ul className="mt-4 space-y-2 text-gray-500 text-[12px]">
+                            </div>
+                            <ul className="mt-0 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Support Center</Link>
                                 </li>
@@ -195,16 +189,14 @@ const SitemapPage = () => {
                                     <Link to='/'>Business Support</Link>
                                 </li>
                             </ul>
-                        </details>
+                        </div>
 
-                        <details className="group pt-0 sm:pt-8">
-                            <summary
-                                className="relative border-b border-b-[#ABABAB] pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                        <div className="group pt-0 sm:pt-2">
+                            <div
+                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Community
-                                <RxPlus
-                                    className="absolute right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:rotate-90"/>
-                            </summary>
-                            <ul className="mt-4 space-y-2 text-gray-500 text-[12px]">
+                            </div>
+                            <ul className="mt-0 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Events</Link>
                                 </li>
@@ -221,16 +213,14 @@ const SitemapPage = () => {
                                     <Link to='/'>Become an Affiliate Partner</Link>
                                 </li>
                             </ul>
-                        </details>
+                        </div>
 
-                        <details className="group pt-0 sm:pt-8">
-                            <summary
-                                className="relative border-b border-b-[#ABABAB] pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                        <div className="group pt-0 sm:pt-2">
+                            <div
+                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Account
-                                <RxPlus
-                                    className="absolute right-0 top-1 h-4 w-4 stroke-slate-700 transition duration-300 group-open:rotate-90"/>
-                            </summary>
-                            <ul className="mt-4 space-y-2 text-gray-500 text-[12px]">
+                            </div>
+                            <ul className="mt-0 space-y-2 text-primary text-[12px]">
                                 <li className="hover:text-primary">
                                     <Link to='/'>Manage Your Nosres Account</Link>
                                 </li>
@@ -238,7 +228,7 @@ const SitemapPage = () => {
                                     <Link to='/'>Create an Account</Link>
                                 </li>
                             </ul>
-                        </details>
+                        </div>
                     </div>
                 </div>
             </section>
