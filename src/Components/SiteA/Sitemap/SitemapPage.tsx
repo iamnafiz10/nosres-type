@@ -114,7 +114,7 @@ const SitemapPage = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
                         <div className="group pt-0 sm:pt-2">
                             <div
-                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                className="relative pb-4 flex  list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Nosres Inc.
                             </div>
                             <ul className="mt-0 space-y-2 text-primary text-[12px]">
@@ -141,7 +141,7 @@ const SitemapPage = () => {
 
                         <div className="group pt-0 sm:pt-2">
                             <div
-                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                className="relative pb-4 flex  list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Business Portfolio
                             </div>
                             <ul className="mt-0 space-y-2 text-primary text-[12px]">
@@ -162,7 +162,7 @@ const SitemapPage = () => {
 
                         <div className="group pt-0 sm:pt-2">
                             <div
-                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                className="relative pb-4 flex  list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Resources
                             </div>
                             <ul className="mt-0 space-y-2 text-primary text-[12px]">
@@ -192,7 +192,7 @@ const SitemapPage = () => {
 
                         <div className="group pt-0 sm:pt-2">
                             <div
-                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                className="relative pb-4 flex  list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Community
                             </div>
                             <ul className="mt-0 space-y-2 text-primary text-[12px]">
@@ -216,7 +216,7 @@ const SitemapPage = () => {
 
                         <div className="group pt-0 sm:pt-2">
                             <div
-                                className="relative pb-4 flex cursor-pointer list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
+                                className="relative pb-4 flex  list-none text-gray-600 gap-4 pr-8 text-[14px]  focus-visible:outline-none group-hover:text-slate-800 [&::-webkit-details-marker]:hidden">
                                 Account
                             </div>
                             <ul className="mt-0 space-y-2 text-primary text-[12px]">
