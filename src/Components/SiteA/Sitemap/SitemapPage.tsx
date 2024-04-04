@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {RxPlus} from "react-icons/rx";
 
 const SitemapPage = () => {
     return (
