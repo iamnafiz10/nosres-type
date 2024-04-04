@@ -69,7 +69,7 @@ h2 {
 }
 
 .search-bar input {
-    background-color: rgba(250, 250, 250, 0.73);
+    background-color: #fafafa;
 }
 
 input {
@@ -89,6 +89,18 @@ input {
 textarea {
     color: #39393B !important;
 }
+
+.overlay-blur {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(85, 85, 85, 0.34); /* Adjust the opacity as needed */
+    z-index: 2; /* Ensure it's above other content */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+}
+
 
 /*------------------- Mobile Menu -------------------*/
 #mobile_menu {
@@ -472,6 +484,72 @@ textarea {
     box-shadow: none !important;
     background: rgba(250, 250, 250, 0.73);
 }
+
+/*--------------- Toastify Message Design ------------------*/
+.toastBody {
+    font-size: 14px;
+}
+
+/* Success */
+.Toastify__toast-theme--colored.Toastify__toast--success {
+    background: #D9EDE1 !important;
+    color: rgba(71, 174, 116, 0.74) !important;
+    border: 1.5px solid #47AE74 !important;
+}
+
+.Toastify__toast--success .Toastify__close-button > svg {
+    color: #47AE74 !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success {
+    background: rgb(71 174 116 / 17%) !important;
+}
+
+/* Warning */
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+    background: rgb(253, 246, 178) !important;
+    color: #C27839 !important;
+    border: 1.5px solid #C27839 !important;
+}
+
+.Toastify__toast--warning .Toastify__close-button > svg {
+    color: #C27839 !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning {
+    background: rgba(194, 120, 57, 0.36) !important;
+}
+
+/* Info */
+.Toastify__toast-theme--colored.Toastify__toast--error {
+    background: #ff9999 !important;
+    color: #b22020 !important;
+    border: 1.5px solid #b22020 !important;
+}
+
+.Toastify__toast--error .Toastify__close-button > svg {
+    color: darkred !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+    background: rgba(139, 0, 0, 0.19) !important;
+}
+
+/* Info */
+.Toastify__toast-theme--colored.Toastify__toast--info {
+    background: #E1E7EF !important;
+    color: #006FBE !important;
+    border: 1.5px solid rgba(0, 111, 190, 0.5) !important;
+}
+
+.Toastify__toast--info .Toastify__close-button > svg {
+    color: #006FBE !important;
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info {
+    background: rgba(77, 127, 184, 0.61) !important;
+}
+
 
 /* ------------------- Media Query ----------------*/
 @media only screen and (max-width: 1100px) {

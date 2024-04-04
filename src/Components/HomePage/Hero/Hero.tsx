@@ -1,6 +1,7 @@
 import React from 'react';
 import heroImage from '../../../assets/images/home-hero.png';
 import {Link} from "react-router-dom";
+import {IoSearchOutline} from "react-icons/io5";
 
 function Hero() {
     return (

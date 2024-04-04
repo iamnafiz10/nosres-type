@@ -346,7 +346,7 @@ const PersonalInfoPage = () => {
     };
 
     const notifyP = () => {
-        toast.info('✅ Your phone has been verified', {
+        toast.success('✅ Your phone has been verified', {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,

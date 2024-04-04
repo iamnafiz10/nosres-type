@@ -31,6 +31,8 @@ const NosresInvite = lazy(() => import('./Pages/SiteA/NosresInvite'));
 const Affiliat = lazy(() => import('./Pages/SiteA/Affiliat'));
 const Verification = lazy(() => import('./Pages/SiteA/Verification'));
 const Proposal = lazy(() => import('./Pages/SiteA/Proposal'));
+const SearchResult = lazy(() => import('./Pages/SearchResult'));
+const NoSearch = lazy(() => import('./Pages/NoSearch'));
 
 function App() {
     return (
@@ -53,6 +55,8 @@ function App() {
                         <Route path="/support" element={<Support/>}/>
                         <Route path="/support-process" element={<SupportProcess/>}/>
                         <Route path="/business" element={<Business/>}/>
+                        <Route path="/search-result" element={<SearchResult/>}/>
+                        <Route path="/no-search" element={<NoSearch/>}/>
                         {/* Site A */}
                         <Route path="/sitea-investors" element={<Investors/>}/>
                         <Route path="/sitea-contact" element={<Contact/>}/>

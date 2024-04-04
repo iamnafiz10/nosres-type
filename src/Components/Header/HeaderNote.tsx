@@ -128,47 +128,70 @@ function Header() {
 
 
     // For Mobile-search-bar ---------------------------------------------
-    const [mobileSearchText, setMobileSearchText] = useState('');
-    const [isMobileSearchExpanded, setIsMobileSearchExpanded] = useState(false);
-    const mobileInputRef = useRef<HTMLInputElement>(null);
-    useEffect(() => {
-        if (location.pathname === '/search-result') {
-            // Preserve search text only on search details page
-            const storedSearchText = localStorage.getItem('mobileSearchText');
-            if (storedSearchText) {
-                setMobileSearchText(storedSearchText);
-            }
-        } else {
-            // Clear search text on other pages
-            setMobileSearchText('');
-            localStorage.removeItem('mobileSearchText');
-        }
-    }, [location.pathname]);
+    const [MobilesearchText, setMobileSearchText] = useState('');
 
+    // For make searchbar width bigger when click
+    const [isMobileSearchExpanded, setIsMobileSearchExpanded] = useState(false);
+    const inputMobileRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            if (
+                inputRef.current &&
+                !inputRef.current.contains(target) &&
+                !(target && target.classList && target.classList.contains('set_input_under_right'))
+            ) {
+                setIsMobileSearchExpanded(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
 
     const handleMobileSearchExpandedClick = () => {
         setIsMobileSearchExpanded(true);
     };
 
-    const handleMobileClearText = () => {
+    const handleClearMobileText = () => {
         setMobileSearchText('');
     };
 
-    const handleMobileInputBlur = () => {
+    const handleInputMobileBlur = () => {
         setIsMobileSearchExpanded(false);
     };
 
-    const handleMobileKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const Mobilelocation = useLocation();
+    useEffect(() => {
+        if (Mobilelocation.pathname === '/search-result') {
+            // Preserve search text only on search details page
+            const storedMobileSearchText = localStorage.getItem('MobilesearchText');
+            if (storedMobileSearchText) {
+                setMobileSearchText(storedMobileSearchText);
+            }
+        } else {
+            // Clear search text on other pages
+            setMobileSearchText('');
+            localStorage.removeItem('MobilesearchText');
+        }
+    }, [location.pathname]);
+
+    const handleKeyMobilePress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            const query = encodeURIComponent(mobileSearchText);
+            const query = encodeURIComponent(MobilesearchText);
             window.location.href = `/search-result?query=${query}`;
         }
     };
 
     const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMobileSearchText(e.target.value);
-        localStorage.setItem('mobileSearchText', e.target.value);
+        localStorage.setItem('MobilesearchText', e.target.value);
     };
+
 
     return (
         <>
@@ -632,29 +655,26 @@ function Header() {
                 }
                 <div id="mobile_menu" className="block lg:hidden bg-white z-50 overflow-hidden w-full h-[100%]">
                     <div className="navbar-wrapper px-4 pt-20 space-y-5">
-                        <div
-                            className={`block lg:hidden search-bar-mobile relative ${isMobileSearchExpanded ? 'w-full' : 'w-full'}`}>
+                        <div className={`flex lg:hidden search-bar relative ${isSearchExpanded ? 'w-full' : 'w-full'}`}>
                             <input
-                                ref={mobileInputRef}
+                                ref={inputMobileRef}
                                 type="text"
-                                className={`border text-[14px] border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isMobileSearchExpanded ? 'w-full' : 'w-full'}`}
-                                placeholder="Search"
-                                value={mobileSearchText}
+                                className={`border text-[14px] border-gray-300 rounded pl-10 py-1 focus:outline-none focus:border-primary focus:ring-0 transition-all duration-300 ${isSearchExpanded ? 'w-full' : 'w-full'}`}
+                                placeholder=" Search nosres.com"
+                                value={MobilesearchText}
                                 onChange={handleMobileChange}
                                 onFocus={handleMobileSearchExpandedClick}
-                                onBlur={handleMobileInputBlur}
-                                onKeyPress={handleMobileKeyPress}
+                                onKeyPress={handleKeyMobilePress} // Handle Enter key press
                                 style={{
                                     position: 'absolute',
-                                    zIndex: 999,
+                                    zIndex: 999, // Ensure it's above other content
                                     top: '50%',
                                     transform: 'translateY(-50%)',
                                     left: 0,
                                 }}
                             />
 
-
-                            <div id="search_dropdown_menu"
+                            <div id="mobile_search_dropdown_menu"
                                  className={`search-dropdown-menu ${isMobileSearchExpanded ? 'h-[180px] w-full pt-2 opacity-100' : 'opacity-0 h-0'} overflow-hidden top-6 z-50 absolute text-gray-700 bg-white rounded shadow border`}>
                                 <div className="container">
                                     <div className="col flex items-center px-0 pb-2 w-full">
@@ -689,12 +709,13 @@ function Header() {
                             </div>
 
                             <div className="absolute left-0 inset-y-0 flex items-center justify-between">
-                                <IoSearchOutline className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
+                                <IoSearchOutline
+                                    className="h-5 w-5 ml-3 text-gray-400 hover:text-gray-500 z-[9999]"/>
                             </div>
 
                             <div
-                                className="set_input_under_right absolute right-0 inset-y-0 flex items-center cursor-pointer"
-                                onClick={handleMobileClearText}
+                                className="set_input_under_right absolute right-0  inset-y-0 flex items-center cursor-pointer"
+                                onClick={handleClearMobileText}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -712,8 +733,9 @@ function Header() {
                                 </svg>
                             </div>
                             {isMobileSearchExpanded &&
-                                <div className="overlay-blur" onClick={handleMobileInputBlur}></div>}
+                                <div className="overlay-blur" onClick={handleInputMobileBlur}></div>}
                         </div>
+
                         {/*<div className="m-4 search-bar flex lg:hidden relative">*/}
                         {/*    <input*/}
                         {/*        type="text"*/}
