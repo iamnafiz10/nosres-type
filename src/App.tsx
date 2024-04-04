@@ -31,6 +31,7 @@ const NosresInvite = lazy(() => import('./Pages/SiteA/NosresInvite'));
 const Affiliat = lazy(() => import('./Pages/SiteA/Affiliat'));
 const Verification = lazy(() => import('./Pages/SiteA/Verification'));
 const Proposal = lazy(() => import('./Pages/SiteA/Proposal'));
+const Sitemap = lazy(() => import('./Pages/SiteA/Sitemap'));
 const SearchResult = lazy(() => import('./Pages/SearchResult'));
 const NoSearch = lazy(() => import('./Pages/NoSearch'));
 
@@ -70,6 +71,7 @@ function App() {
                         <Route path="/sitea-affiliate" element={<Affiliat/>}/>
                         <Route path="/sitea-verification" element={<Verification/>}/>
                         <Route path="/sitea-proposal" element={<Proposal/>}/>
+                        <Route path="/sitea-sitemap" element={<Sitemap/>}/>
                     </Routes>
                 </Suspense>
             </BrowserRouter>
