@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link, NavLink, useLocation} from "react-router-dom";
 import LogoImg from "../../assets/images/logo.svg";
-import {CiClock2} from "react-icons/ci";
 import {IoSearchOutline} from "react-icons/io5";
 import {IoIosArrowDown} from "react-icons/io";
 import WhoImg1 from "../../assets/images/m1.svg";
@@ -211,7 +210,7 @@ const SuggHeader = () => {
                                     <div className="col flex items-center px-0 pb-2 w-72">
                                         <div className="flex items-center gap-3 justify-between w-full">
                                             <div className="left flex items-center gap-1">
-                                                <CiClock2 size={20} className="text-primary"/>
+                                                <IoSearchOutline size={20} className="text-primary"/>
                                                 <div className="text">
                                                     <h2 className="text-[#252C32] font-semibold text-[14px]">
                                                         Suggested Searches
@@ -654,7 +653,7 @@ const SuggHeader = () => {
                                     <div className="col flex items-center px-0 pb-2 w-full">
                                         <div className="flex items-center gap-3 justify-between w-full">
                                             <div className="left flex items-center gap-1">
-                                                <CiClock2 size={20} className="text-primary"/>
+                                                <IoSearchOutline size={20} className="text-primary"/>
                                                 <div className="text">
                                                     <h4 className="text-[#252C32] font-semibold text-[16px]">
                                                         Suggested Searches
