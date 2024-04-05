@@ -213,8 +213,8 @@ function Header() {
 
                             <div id="search_dropdown_menu"
                                  className={`search-dropdown-menu ${isSearchExpanded ? 'h-[180px] pt-2 opacity-100' : 'opacity-0 h-0'} overflow-hidden top-6 z-50 absolute text-gray-700 bg-white rounded shadow border`}>
-                                <div className="container">
-                                    <div className="col flex items-center px-0 pb-2 w-72">
+                                <div className="container p-0">
+                                    <div className="col px-3 pl-[14px] flex items-center pb-2 w-80">
                                         <div className="flex items-center gap-3 justify-between w-full">
                                             <div className="left flex items-center gap-1">
                                                 <CiClock2 size={20} className="text-primary"/>
@@ -231,7 +231,7 @@ function Header() {
                                         </div>
                                     </div>
                                     <hr/>
-                                    <ul className="pt-2 space-y-2 text-[14px] text-[#828D9E]">
+                                    <ul className="pt-2 px-3 pl-[14px] space-y-2 text-[14px] text-[#828D9E]">
                                         <li className="hover:text-primary">
                                             <Link to='/search-result'>nosres for business</Link>
                                         </li>
@@ -656,8 +656,8 @@ function Header() {
 
                             <div id="search_dropdown_menu"
                                  className={`search-dropdown-menu ${isMobileSearchExpanded ? 'h-[180px] w-full pt-2 opacity-100' : 'opacity-0 h-0'} overflow-hidden top-6 z-50 absolute text-gray-700 bg-white rounded shadow border`}>
-                                <div className="container">
-                                    <div className="col flex items-center px-0 pb-2 w-full">
+                                <div className="container-full pb-0">
+                                    <div className="col px-3 flex items-center pb-2 w-full">
                                         <div className="flex items-center gap-3 justify-between w-full">
                                             <div className="left flex items-center gap-1">
                                                 <CiClock2 size={20} className="text-primary"/>
@@ -675,7 +675,7 @@ function Header() {
                                         </div>
                                     </div>
                                     <hr/>
-                                    <ul className="pt-2 space-y-2 text-[14px] text-[#828D9E]">
+                                    <ul className="pt-2 px-3 pl-[14px] space-y-2 text-[14px] text-[#828D9E]">
                                         <li className="hover:text-primary">
                                             <Link to='/search-result'>nosres for business</Link>
                                         </li>
