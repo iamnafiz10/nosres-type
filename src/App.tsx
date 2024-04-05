@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SuggHeader from "./Components/Header/SuggHeader";
 
 const Home = lazy(() => import('./Pages/Home'));
 const About = lazy(() => import('./Pages/About'));
@@ -72,6 +73,7 @@ function App() {
                         <Route path="/sitea-verification" element={<Verification/>}/>
                         <Route path="/sitea-proposal" element={<Proposal/>}/>
                         <Route path="/sitea-sitemap" element={<Sitemap/>}/>
+                        <Route path="/sitea-sugg-header" element={<SuggHeader/>}/>
                     </Routes>
                 </Suspense>
             </BrowserRouter>
