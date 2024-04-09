@@ -78,7 +78,8 @@ function RegisterForm() {
                         </div>
 
                         <div className="col lg:flex justify-end">
-                            <form className="register_form w-full md:w-[450px] h-full md:h-[450px] px-6 py-6 bg-white rounded">
+                            <form
+                                className="register_form w-full md:w-[450px] h-full md:h-[465px] px-6 py-6 bg-white rounded">
                                 <div className="flex items-center gap-6">
                                     <div className="col">
                                         <label htmlFor="name" className="text-[14px]">First Name</label>
@@ -111,7 +112,7 @@ function RegisterForm() {
                                         </div>
                                     </div>
 
-                                    <span className="text-[12px] text-red-600">Email is not valid</span>
+                                    <span className="text-[12px] text-red-600">Invalid email format</span>
                                 </div>
 
                                 <div className="block mt-4">
@@ -134,10 +135,11 @@ function RegisterForm() {
                                         </div>
                                     </div>
 
-                                    <div className="mt-4">
-                                        <span className="text-[12px] text-[#828D9E]">
-                                        The password must be at least 8 characters long.
-                                    </span>
+                                    <div className="mt-0">
+                                        <span className="text-[12px] text-red-600">
+                                            The password must be at least 8 characters long.
+                                        </span>
+                                        <br/>
                                         <br/>
                                         <span className="text-[12px] text-[#828D9E]">
                                         By signing up, you agree to Nosres’ <Link to='#'

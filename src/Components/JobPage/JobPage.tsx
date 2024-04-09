@@ -1,8 +1,10 @@
 'use client';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {RxPlus} from "react-icons/rx";
 import {Checkbox, Label, Select} from 'flowbite-react';
+import Skeleton from 'react-loading-skeleton'
+import "react-loading-skeleton/dist/skeleton.css";
 import {
     HiOutlineUserGroup,
     HiOutlineMapPin,
@@ -21,6 +23,22 @@ function JobPage() {
     const handleClearText = () => {
         setSearchText('');
     };
+
+    // For Page Loading
+    const [loading, setLoading] = useState(true); // Set loading state
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 500);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    useEffect(() => {
+    }, [loading]);
     return (
         <>
             <section id="job-section" className="bg-gray-50 h-100%">
@@ -226,19 +244,28 @@ function JobPage() {
 
                         <div className="col lg:col-span-8">
                             <div className="box bg-white py-4 px-6 rounded flex items-center justify-between">
-                                <h4 className="text-primary text-[18px]">
-                                    7 <span className="text-black">jobs</span>
-                                </h4>
-                                <div className="flex text-[14px] items-center gap-3">
-                                    <h4>Sort by:</h4>
-                                    <div className="max-w-md">
-                                        <Select id="job_filter">
-                                            <option>Relevance</option>
-                                            <option>Newest</option>
-                                            <option>Most Popular</option>
-                                        </Select>
-                                    </div>
-                                </div>
+                                {loading ? (
+                                    <>
+                                        <Skeleton height={10} count={1}/>
+                                        <Skeleton height={30} count={1}/>
+                                    </>
+                                ) : (
+                                    <>
+                                        <h4 className="text-primary text-[18px]">
+                                            7 <span className="text-black">jobs</span>
+                                        </h4>
+                                        <div className="flex text-[14px] items-center gap-3">
+                                            <h4>Sort by:</h4>
+                                            <div className="max-w-md">
+                                                <Select id="job_filter">
+                                                    <option>Relevance</option>
+                                                    <option>Newest</option>
+                                                    <option>Most Popular</option>
+                                                </Select>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
                             {/* Job */}
