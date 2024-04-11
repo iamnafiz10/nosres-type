@@ -23,11 +23,12 @@ import {PiEnvelopeThin, PiLinkSimpleLight} from "react-icons/pi";
 import {FaXTwitter} from "react-icons/fa6";
 import {Link} from 'react-scroll';
 import LogoImg from "../../assets/images/logo.svg";
+import {BsFacebook, BsLinkedin, BsTwitterX} from "react-icons/bs";
 
 const BlogDetails = () => {
     // For Page link Copy
     const [copied, setCopied] = useState(false);
-    const handleClick = () => {
+    const handleClickCopy = () => {
         // Get the current page URL
         const currentPageURL = window.location.href;
 
@@ -44,337 +45,313 @@ const BlogDetails = () => {
             });
     };
 
-    const [activeSection, setActiveSection] = useState(null);
 
-    // For Outline
-    const scrollToOutlines = () => {
-        const outlinesSection = document.getElementById('outlines');
-        if (outlinesSection) {
-            const offsetTop = outlinesSection.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({top: offsetTop - 50, behavior: 'smooth'});
-        }
-    };
+    const [activeTab, setActiveTab] = useState('outline'); // Initial active tab
 
-    // For Introduction
-    const scrollToIntroduction = () => {
-        const introductionSection = document.getElementById('introduction');
-        if (introductionSection) {
-            const offsetTop = introductionSection.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({top: offsetTop - 50, behavior: 'smooth'});
-        }
-    };
-
-    // For Advantage
-    const scrollToAdvantage = () => {
-        const advantageSection = document.getElementById('advantage');
-        if (advantageSection) {
-            const offsetTop = advantageSection.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({top: offsetTop - 50, behavior: 'smooth'});
-        }
-    };
-
-    // For Engaging
-    const scrollToEngaging = () => {
-        const engagingSection = document.getElementById('engaging');
-        if (engagingSection) {
-            const offsetTop = engagingSection.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({top: offsetTop - 50, behavior: 'smooth'});
-        }
-    };
-
-    // For Discussion
-    const scrollToDiscussion = () => {
-        const discussionSection = document.getElementById('discussion');
-        if (discussionSection) {
-            const offsetTop = discussionSection.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({top: offsetTop - 50, behavior: 'smooth'});
-        }
+    const handleScroll = (entries: any[]) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setActiveTab(entry.target.id);
+            }
+        });
     };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const sections = document.querySelectorAll('.section');
-            let currentActiveSection = null;
+        const observer = new IntersectionObserver(handleScroll, {
+            rootMargin: '-50px 0px -50% 0px', // Adjust this value if needed
+            threshold: 0.5,
+        });
 
-            sections.forEach(section => {
-                const {top, bottom} = section.getBoundingClientRect();
-                const sectionHeight = bottom - top;
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => observer.observe(section));
 
-                // Adjust this value as needed to control when a section becomes active
-                const threshold = sectionHeight / 2;
-
-                if (top <= threshold && bottom >= threshold) {
-                    currentActiveSection = section.id;
-                }
-            });
-
-            setActiveSection(currentActiveSection);
-        };
-
-        window.addEventListener('scroll', handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            sections.forEach(section => observer.unobserve(section));
         };
     }, []);
 
-
-    useEffect(() => {
-        const introductionSection = document.getElementById('introduction');
-
-        if (activeSection === 'advantage' && introductionSection) {
-            introductionSection.classList.remove('active_blog_tab');
+    const scrollToSection = (sectionId: React.SetStateAction<string>) => {
+        // @ts-ignore
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const offsetTop = section.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({top: offsetTop - 50, behavior: 'smooth'});
         }
-    }, [activeSection]);
+    };
 
-
+    const handleClick = (tabId: React.SetStateAction<string>) => {
+        setActiveTab(tabId);
+        scrollToSection(tabId);
+    };
     return (
         <>
-            <section id="blog-details-section">
-                <div
-                    id="outlines"
-                    className={`container pt-24 section ${activeSection === 'outlines' ? 'active_blog_tab' : ''}`}
-                >
-                    <div className="flex items-center gap-2 text-[14px]">
+            <section id="terms-detail-section">
+                <div className="container py-16">
+                    <div id="outline" className="section flex items-center gap-2 py-10 text-[14px]">
                         <Link to='#' className="cursor-pointer">Home</Link> <HiChevronRight className="text-black"/>
                         <Link to='#'>Newsroom</Link> <HiChevronRight className="text-black"/> <span
                         className="text-[#828D9E]">Big Education Publisher Pearson to Phase Out Print Textbooks</span>
                     </div>
-                    {/* Left Side Fixed */}
-                    <div
-                        className="hidden lg:block left_side_fixed fixed z-[9999] bg-white py-4 rounded w-[150px] text-[14px] mt-12">
-                        <ul className="space-y-3 text-primary">
-                            <li>
-                                <Link to='#' onClick={scrollToOutlines}
-                                      className={`cursor-pointer ${activeSection === 'outlines' ? 'active_blog_tab' : ''}`}>
-                                    Outline
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to='#' onClick={scrollToIntroduction}
-                                      className={`cursor-pointer ${activeSection === 'introduction' ? 'active_blog_tab' : ''}`}>
-                                    Introduction
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to='#' onClick={scrollToAdvantage}
-                                      className={`cursor-pointer ${activeSection === 'advantage' ? 'active_blog_tab' : ''}`}>
-                                    Huge Advantage
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to='#' onClick={scrollToEngaging}
-                                      className={`cursor-pointer ${activeSection === 'engaging' ? 'active_blog_tab' : ''}`}>
-                                    Engaging with Others
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to='#' onClick={scrollToDiscussion}
-                                      className={`cursor-pointer ${activeSection === 'discussion' ? 'active_blog_tab' : ''}`}>
-                                    Discussion
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
 
-                    {/* Right Side Fixed */}
-                    <div className="container fixed z-[9999]">
-                        <div className="relative">
-                            <div
-                                className="hidden lg:block right_side_fixed z-[9999] absolute right-0 bg-white py-4 px-4 rounded w-[55px] text-[14px] mt-12">
-                                <ul className="space-y-3 flex flex-col items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                        {/* Left Side Sticky */}
+                        <div
+                            className="col mt-2 lg:col-span-2 flex-initial lg:sticky top-[80px] h-full lg:h-[27vh] w-full overflow-auto">
+                            <ul className="space-y-3 text-primary">
+                                <li>
+                                    <div onClick={() => handleClick('outline')}
+                                         className="flex items-center gap-2 cursor-pointer">
+                                        <h4 className={`text-prgcolor hover:text-primary text-[14px] ${activeTab === 'outline' ? 'text-primary' : ''}`}>
+                                            Outline
+                                        </h4>
+                                    </div>
+                                </li>
 
+                                <li>
+                                    <div onClick={() => handleClick('introduction')}
+                                         className="flex items-center gap-2 cursor-pointer">
+                                        <h4 className={`text-prgcolor hover:text-primary text-[14px] ${activeTab === 'introduction' ? 'text-primary' : ''}`}>
+                                            Introduction
+                                        </h4>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div onClick={() => handleClick('huge-advantage')}
+                                         className="flex items-center gap-2 cursor-pointer">
+                                        <h4 className={`text-prgcolor hover:text-primary text-[14px] ${activeTab === 'huge-advantage' ? 'text-primary' : ''}`}>
+                                            Huge Advantage
+                                        </h4>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div onClick={() => handleClick('engaging-with-others')}
+                                         className="flex items-center gap-2 cursor-pointer">
+                                        <h4 className={`text-prgcolor hover:text-primary text-[14px] ${activeTab === 'engaging-with-others' ? 'text-primary' : ''}`}>
+                                            Engaging with Others
+                                        </h4>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div onClick={() => handleClick('discussion')}
+                                         className="flex items-center gap-2 cursor-pointer">
+                                        <h4 className={`text-prgcolor hover:text-primary text-[14px] ${activeTab === 'discussion' ? 'text-primary' : ''}`}>
+                                            Discussion
+                                        </h4>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Right Side Content */}
+                        <div className="col lg:col-span-8">
+                            <div id="" className="">
+                                <h1 className="text-[34px] font-semibold">
+                                    Big Education Publisher Pearson to Phase
+                                    Out Print Textbooks
+                                </h1>
+                                <h4 className="mt-4 text-[#828D9E] text-[16px]">Why a move from print to digital by the
+                                    world’s
+                                    largest publisher of
+                                    educational books could spell
+                                    disaster for students?</h4>
+
+                                <div className="block sm:flex items-center gap-2 mt-3">
+                                    <div className="flex">
+                                        <img src={userImage} className="w-7 h-7 rounded-full ring-2 ring-white"
+                                             alt="userImg"/>
+                                        <img src={userImage} className="w-7 h-7 -ml-1 rounded-full ring-2 ring-white"
+                                             alt="userImg"/>
+                                        <img src={userImage} className="w-7 h-7 -ml-1 rounded-full ring-2 ring-white"
+                                             alt="userImg"/>
+                                    </div>
+                                    <h4 className="mt-4 sm:mt-0 text-[#39393B] text-[14px]">
+                                        By <Link to='#' className="text-primary cursor-pointer">Jamal
+                                        Halam</Link>, <Link to='#'
+                                                            className="text-primary cursor-pointer">Jane
+                                        Doe</Link>,
+                                        and <Link to='#' className="text-primary cursor-pointer">Jack
+                                        Appleseed</Link><br/>
+                                        Contributor, Chief Marketing Officer, and CFO
+                                    </h4>
+                                </div>
+                                <div className="flex items-center ml-[85px] mt-1 gap-2 pb-4 text-[14px] text-[#828D9E]">
+                                    <h4>Published May 02, 2020</h4>
+                                    <div className="dot text-[#828D9E]"><GoDotFill size={8}/></div>
+                                    <h4>Updated</h4>
+                                </div>
+                                <hr/>
+                                <img src={postImage} className="mt-6 rounded" alt="postImage"/>
+                            </div>
+
+                            <div id="introduction" className="section pt-2">
+                                <h4 className="pb-2 text-[12px] text-[#828D9E]">
+                                    Soaring above a the world's majesty<br/>
+                                    Photo credit: Pexels.com
+                                </h4>
+                                <h4 className="text-[18px] font-semibold">Introduction</h4>
+                                <p className="mt-1">
+                                    The world’s largest education publisher, Pearson, has said it will gradually phase
+                                    out
+                                    print textbooks. It has taken a decision to make all of its learning resources
+                                    “digital
+                                    first”. Pearson said the
+                                    future of the industry is in e-books and digital services. Pearson CEO John Fallon
+                                    explained more
+                                    about the company’s future direction. He told the BBC: “We are now over the digital
+                                    tipping point.
+                                </p>
+                            </div>
+
+                            <div id="huge-advantage" className="section pt-10">
+                                <h4 className="text-[18px] font-semibold">Huge Advantage</h4>
+                                <p className="mt-1">
+                                    Pearson said a huge advantage of digital books is that they can be continually
+                                    updated,
+                                    which
+                                    means teachers will always have access to the latest versions of textbooks. Mr.
+                                    Fallon
+                                    said Pearson would stop its current business model of revising printed course books
+                                    every three years. He
+                                    said this model has dominated the industry for over four decades and is now past its
+                                    use-by date.
+                                </p>
+                            </div>
+
+                            <div id="engaging-with-others" className="section pt-10">
+                                <h4 className="text-[18px] font-semibold">Engaging with Others</h4>
+                                <p className="mt-1">
+                                    Fallon said: “We learn by engaging and sharing with others, and a digital
+                                    environment
+                                    enables you
+                                    to do that in a much more effective way.” He added the digital books will appeal to
+                                    the
+                                    “Netflix
+                                    and Spotify generation”. Textbook writers are worried they will earn less from their
+                                    books as digital products are sold on a subscription basis.
+                                </p>
+                            </div>
+
+                            <div id="discussion" className="section pt-10">
+                                <h4 className="text-[18px] font-semibold">Discussion</h4>
+                                <p className="mt-1">1. Paper books are better than e-books. Do you agree or
+                                    disagree? </p>
+                                <p className="mt-1">2. Do you think in the next few years people will become hybrid
+                                    readers,
+                                    who juggle devices and
+                                    paper?</p>
+                                <div className="tag_area mt-4 block sm:flex items-center gap-4">
+                                    <h4 className="text-[14px] mb-3 sm:mb-0">Related Tags</h4>
+                                    <button type="button"
+                                            className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
+                                        Business
+                                    </button>
+
+                                    <button type="button"
+                                            className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
+                                        Startup
+                                    </button>
+
+                                    <button type="button"
+                                            className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
+                                        Another Tag
+                                    </button>
+                                </div>
+
+                                {/* Mobile Social Icons */}
+                                <ul className="mt-4 flex lg:hidden items-center gap-4">
                                     <li>
                                         <div>
-                                            <Link to='#'>
-                                                <SiFacebook size={25} className="h-7 cursor-pointer text-[#0866FF]"/>
+                                            <Link to='#' className="cursor-pointer">
+                                                <SiFacebook size={21} className="h-7 text-[#0866FF]"/>
                                             </Link>
                                         </div>
                                     </li>
                                     <li>
                                         <div>
-                                            <Link to='#'>
-                                                <FaXTwitter size={21} className="h-7 cursor-pointer text-[#000000]"/>
+                                            <Link to='#' className="cursor-pointer">
+                                                <FaXTwitter size={19} className="h-7 text-[#000000]"/>
                                             </Link>
                                         </div>
                                     </li>
                                     <li>
                                         <div>
-                                            <Link to='#'>
-                                                <SiLinkedin size={22} className="h-7 cursor-pointer text-primary"/>
+                                            <Link to='#' className="cursor-pointer">
+                                                <SiLinkedin size={18} className="h-7 text-primary"/>
                                             </Link>
                                         </div>
                                     </li>
                                     <li>
                                         <div>
-                                            <Link to='#'>
-                                                <PiEnvelopeThin size={28} className="h-7 cursor-pointer text-gray-600"/>
+                                            <Link to='#' className="cursor-pointer">
+                                                <PiEnvelopeThin size={24} className="h-7 text-gray-600"/>
                                             </Link>
                                         </div>
                                     </li>
                                     <li>
-                                        <Tooltip content={copied ? "Copied" : "Link"} placement="bottom">
-                                            <Link onClick={handleClick} to='#'>
-                                                <PiLinkSimpleLight size={28}
-                                                                   className="h-7 cursor-pointer text-blue-600"/>
+                                        <Tooltip content={copied ? "Copied" : "Link"} animation="duration-0"
+                                                 placement="bottom">
+                                            <Link onClick={handleClickCopy} to='#' className="cursor-pointer">
+                                                <PiLinkSimpleLight size={22} className="h-7 text-blue-600"/>
                                             </Link>
                                         </Tooltip>
-
                                     </li>
                                 </ul>
                             </div>
                         </div>
+
+                        {/* Right Side Social */}
+                        <div
+                            className="pt-3 col lg:col-span-2 hidden lg:flex justify-end flex-initial lg:sticky top-[80px] h-full lg:h-[34vh] w-full overflow-auto lg:overflow-hidden">
+                            <ul className="flex flex-col items-end">
+                                <li>
+                                    <div>
+                                        <Link to='#'>
+                                            <BsFacebook size={23} className="w-full cursor-pointer text-[#0866FF]"/>
+                                        </Link>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="mt-5">
+                                        <Link to='#'>
+                                            <BsTwitterX size={23} className="w-full cursor-pointer text-[#000000]"/>
+                                        </Link>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="mt-5">
+                                        <Link to='#'>
+                                            <BsLinkedin size={23} className="w-full cursor-pointer text-primary"/>
+                                        </Link>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="mt-4">
+                                        <Link to='#'>
+                                            <PiEnvelopeThin size={28}
+                                                            className="ml-1 w-full cursor-pointer text-gray-500"/>
+                                        </Link>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="mt-3">
+                                        <Tooltip content={copied ? "Copied" : "Link"} animation="duration-0"
+                                                 placement="left" arrow={true}>
+                                            <Link onClick={handleClickCopy} to='#'>
+                                                <PiLinkSimpleLight size={25}
+                                                                   className="w-full cursor-pointer text-blue-600"/>
+                                            </Link>
+                                        </Tooltip>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    {/* Blog Content */}
-                    <div className="pt-14 blog-content w-full lg:w-[600px] mx-auto">
-                        <h1 className="text-[34px] font-semibold">
-                            Big Education Publisher Pearson to Phase
-                            Out Print Textbooks
-                        </h1>
-                        <h4 className="mt-4 text-[#828D9E] text-[16px]">Why a move from print to digital by the world’s
-                            largest publisher of
-                            educational books could spell
-                            disaster for students?</h4>
-
-                        <div className="flex items-center gap-2 mt-3 image-box">
-                            <div className="flex">
-                                <img src={userImage} className="w-7 h-7 rounded-full ring-2 ring-white" alt="userImg"/>
-                                <img src={userImage} className="w-7 h-7 -ml-1 rounded-full ring-2 ring-white"
-                                     alt="userImg"/>
-                                <img src={userImage} className="w-7 h-7 -ml-1 rounded-full ring-2 ring-white"
-                                     alt="userImg"/>
-                            </div>
-                            <h4 className="text-[#39393B] text-[14px]">
-                                By <Link to='#' className="text-primary cursor-pointer">Jamal Halam</Link>, <Link to='#'
-                                                                                                                  className="text-primary cursor-pointer">Jane
-                                Doe</Link>,
-                                and <Link to='#' className="text-primary cursor-pointer">Jack Appleseed</Link><br/>
-                                Contributor, Chief Marketing Officer, and CFO
-                            </h4>
-                        </div>
-                        <div className="flex items-center ml-[85px] mt-1 gap-2 pb-4 text-[14px] text-[#828D9E]">
-                            <h4>Published May 02, 2020</h4>
-                            <div className="dot text-[#828D9E]"><GoDotFill size={8}/></div>
-                            <h4>Updated</h4>
-                        </div>
-                        <hr/>
-                        <img src={postImage} className="mt-6 rounded" alt="postImage"/>
-
-                        <div id="introduction"
-                             className={`point py-4 section ${activeSection === 'introduction' ? 'active_blog_tab' : ''}`}
-                        >
-                            <h4 className="pb-2 text-[12px] text-[#828D9E]">
-                                Soaring above a the world's majesty<br/>
-                                Photo credit: Pexels.com
-                            </h4>
-                            <h4 className="text-[18px] font-semibold">Introduction</h4>
-                            <p className="mt-1">
-                                The world’s largest education publisher, Pearson, has said it will gradually phase out
-                                print textbooks. It has taken a decision to make all of its learning resources “digital
-                                first”. Pearson said the
-                                future of the industry is in e-books and digital services. Pearson CEO John Fallon
-                                explained more
-                                about the company’s future direction. He told the BBC: “We are now over the digital
-                                tipping point.
-                            </p>
-                        </div>
-
-                        <div id="advantage"
-                             className={`point py-4 section ${activeSection === 'advantage' ? 'active_blog_tab' : ''}`}
-                        >
-                            <h4 className="text-[18px] font-semibold">Huge Advantage</h4>
-                            <p className="mt-1">
-                                Pearson said a huge advantage of digital books is that they can be continually updated,
-                                which
-                                means teachers will always have access to the latest versions of textbooks. Mr. Fallon
-                                said Pearson would stop its current business model of revising printed course books
-                                every three years. He
-                                said this model has dominated the industry for over four decades and is now past its
-                                use-by date.
-                            </p>
-                        </div>
-
-                        <div id="engaging"
-                             className={`point py-4 section ${activeSection === 'engaging' ? 'active_blog_tab' : ''}`}
-                        >
-                            <h4 className="text-[18px] font-semibold">Engaging with Others</h4>
-                            <p className="mt-1">
-                                Fallon said: “We learn by engaging and sharing with others, and a digital environment
-                                enables you
-                                to do that in a much more effective way.” He added the digital books will appeal to the
-                                “Netflix
-                                and Spotify generation”. Textbook writers are worried they will earn less from their
-                                books as digital products are sold on a subscription basis.
-                            </p>
-                        </div>
-
-                        <div id="discussion"
-                             className={`point py-4 section ${activeSection === 'discussion' ? 'active_blog_tab' : ''}`}
-                        >
-                            <h4 className="text-[18px] font-semibold">Discussion</h4>
-                            <p className="mt-1">1. Paper books are better than e-books. Do you agree or disagree? </p>
-                            <p className="mt-1">2. Do you think in the next few years people will become hybrid readers,
-                                who juggle devices and
-                                paper?</p>
-                        </div>
-
-                        <div className="tag_area mt-4 block sm:flex items-center gap-4">
-                            <h4 className="text-[14px] mb-3 sm:mb-0">Related Tags</h4>
-                            <button type="button"
-                                    className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
-                                Business
-                            </button>
-
-                            <button type="button"
-                                    className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
-                                Startup
-                            </button>
-
-                            <button type="button"
-                                    className="text-[14px] py-1 px-4 rounded border border-gray-200 hover:bg-primary hover:text-white">
-                                Another Tag
-                            </button>
-                        </div>
-
-                        <ul className="mt-4 flex lg:hidden items-center gap-4">
-                            <li>
-                                <div>
-                                    <Link to='#' className="cursor-pointer">
-                                        <SiFacebook size={21} className="h-7 text-[#0866FF]"/>
-                                    </Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Link to='#' className="cursor-pointer">
-                                        <FaXTwitter size={19} className="h-7 text-[#000000]"/>
-                                    </Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Link to='#' className="cursor-pointer">
-                                        <SiLinkedin size={18} className="h-7 text-primary"/>
-                                    </Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Link to='#' className="cursor-pointer">
-                                        <PiEnvelopeThin size={24} className="h-7 text-gray-600"/>
-                                    </Link>
-                                </div>
-                            </li>
-                            <li>
-                                <Tooltip content={copied ? "Copied" : "Link"} placement="bottom">
-                                    <Link onClick={handleClick} to='#' className="cursor-pointer">
-                                        <PiLinkSimpleLight size={22} className="h-7 text-blue-600"/>
-                                    </Link>
-                                </Tooltip>
-                            </li>
-                        </ul>
-                    </div>
-
+                    {/* Bottom Slider */}
                     <div className="py-8">
                         <h4 className="text-[24px] font-semibold py-6">Similar Stories</h4>
                         <Swiper
