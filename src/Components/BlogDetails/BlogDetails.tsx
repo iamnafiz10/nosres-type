@@ -304,7 +304,7 @@ const BlogDetails = () => {
 
                         {/* Right Side Social */}
                         <div
-                            className="pt-3 col lg:col-span-2 hidden lg:flex justify-end flex-initial lg:sticky top-[80px] h-full lg:h-[34vh] w-full overflow-auto lg:overflow-hidden">
+                            className="pt-3 col lg:col-span-2 hidden lg:flex justify-end flex-initial lg:sticky top-[80px] h-full lg:h-[36vh] w-full overflow-auto lg:overflow-hidden">
                             <ul className="flex flex-col items-end">
                                 <li>
                                     <div>
