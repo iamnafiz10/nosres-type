@@ -78,8 +78,9 @@ function RegisterForm() {
                         </div>
 
                         <div className="col lg:flex justify-end">
-                            <form className="register_form w-full md:w-[550px] h-full px-6 py-6 bg-white rounded">
-                                <div className="block sm:flex items-start gap-6">
+                            <form
+                                className="register_form w-full md:w-[550px] h-full px-6 py-6 bg-white rounded">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
                                     <div className="col">
                                         <label htmlFor="name" className="text-[14px] text-red-600">First Name</label>
                                         <input
@@ -87,36 +88,35 @@ function RegisterForm() {
                                             type="text"
                                             placeholder="John"
                                         />
-                                        {/* First Name Error Message */}
                                         <div className="flex items-center gap-1 mt-2">
                                             <svg fill="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                                 width="9" height="9">
+                                                 width="9"
+                                                 height="9">
                                                 <path
                                                     d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path>
                                             </svg>
-                                            <div className="text-[12px] text-red-600">Please enter your first name</div>
+                                            <div
+                                                className="text-[12px] text-red-600">Please enter your first name
+                                            </div>
                                         </div>
-                                        {/* First Name Error Message */}
                                     </div>
 
-                                    <div className="col mt-4 sm:mt-0">
+                                    <div className="col">
                                         <label htmlFor="name" className="text-[14px] text-red-600">Last Name</label>
                                         <input
                                             className="mt-1 valid_input rounded w-full focus:ring focus:ring-transparent py-1 px-3 text-[#ABABAB] text-[12px]"
-                                            type="text"
-                                            placeholder="Doe"
-                                        />
-
-                                        {/* Last Name Error Message */}
+                                            type="text" placeholder="Doe"/>
                                         <div className="flex items-center gap-1 mt-2">
                                             <svg fill="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                                 width="9" height="9">
+                                                 width="9"
+                                                 height="9">
                                                 <path
                                                     d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path>
                                             </svg>
-                                            <div className="text-[12px] text-red-600">Please enter your last name</div>
+                                            <div
+                                                className="text-[12px] text-red-600">Please enter your last name
+                                            </div>
                                         </div>
-                                        {/* Last Name Error Message */}
                                     </div>
                                 </div>
 

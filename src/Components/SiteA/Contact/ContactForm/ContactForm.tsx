@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Checkbox, Label} from 'flowbite-react';
+// import {Checkbox, Label} from 'flowbite-react';
+import {Checkbox} from 'antd';
 import contactOneImg from '../../../../assets/images/sitea/Contact-1.png';
 import contactTwoImg from '../../../../assets/images/sitea/Contact-2.png';
 import contactThreeImg from '../../../../assets/images/sitea/Contact-3.png';
@@ -11,6 +12,7 @@ import contactFiveImg from '../../../../assets/images/sitea/Contact-5.png';
 import contactIconOne from '../../../../assets/images/sitea/contact-icon1.svg';
 import contactIconTwo from '../../../../assets/images/sitea/contact-icon2.svg';
 import contactIconThree from '../../../../assets/images/sitea/contact-icon3.svg';
+import {Label} from "flowbite-react";
 
 const ContactForm = () => {
     return (
@@ -72,16 +74,14 @@ const ContactForm = () => {
                                     ></textarea>
                                 </div>
 
-                                <div id="checkbox" className="mt-4">
-                                    <div className="flex items-start gap-2">
-                                        <Checkbox id="category1"/>
-                                        <Label htmlFor="category1" className="text-gray-500 font-normal">
-                                            Please tick the box to confirm that you have read and agree to Nosres'<Link
-                                            to='#' className="text-primary hover:underline"> Terms
-                                            of Use</Link> and <Link to='#' className="text-primary hover:underline">Privacy
-                                            Policy.</Link>
-                                        </Label>
-                                    </div>
+                                <div className="flex items-start gap-2 mt-2">
+                                    <Checkbox defaultChecked={false}/>
+                                    <Label htmlFor="category1" className="text-gray-500 font-normal">
+                                        Please tick the box to confirm that you have read and agree to Nosres'<Link
+                                        to='#' className="text-primary hover:underline"> Terms
+                                        of Use</Link> and <Link to='#' className="text-primary hover:underline">Privacy
+                                        Policy.</Link>
+                                    </Label>
                                 </div>
 
                                 <div className="mt-4">
@@ -92,15 +92,28 @@ const ContactForm = () => {
                                 </div>
                             </form>
                         </div>
-
                         <div className="col mt-1 md:mt-16 lg:mt-0">
                             <h1 className="mb-1 pb-3 font-semibold text-[16px]">
+                                DO YOU NEEED TO REPORT AN ISSUE?
+                            </h1>
+                            <hr/>
+                            <h4 className="mt-2 text-[14px]">
+                                Our application is a work in progress. Consequently, if you encounter any issues or
+                                have suggestions for improvements, please <span
+                                className="text-blue-500 cursor-pointer underline">report them here</span>.
+                                Your feedback is
+                                valuable in helping us make our application better.
+                            </h4>
+
+
+                            <h1 className="mb-1 mt-3 pb-3 font-semibold text-[16px]">
                                 DO YOU NEED HELP?
                             </h1>
                             <hr/>
                             <h4 className="mt-2 text-[14px]">
                                 If so, please visit Nosres Support or select one of the following:
                             </h4>
+
                             <div className="mt-2 flex items-center gap-6">
                                 <Link to='#'>
                                     <img src={contactOneImg} className="w-14 h-14" alt="contactOneImg"/>

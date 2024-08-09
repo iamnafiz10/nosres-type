@@ -227,7 +227,7 @@ const ProposalForm = () => {
                                         <h6>Primary Information</h6>
                                     </div>
                                     <hr/>
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-4">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-4">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 First Name <span className="text-red-600">*</span>
@@ -254,7 +254,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-4">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-4">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 City
@@ -281,7 +281,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-4">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-4">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 ZIP/Postal Code
@@ -327,7 +327,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-4">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-4">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Email Address <span className="text-red-600">*</span>
@@ -363,7 +363,7 @@ const ProposalForm = () => {
                                         <h6>Business Information</h6>
                                     </div>
                                     <hr/>
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-4">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-4">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Company Name (if applicable)
@@ -390,7 +390,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-6">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-6">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Website
@@ -417,7 +417,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Business Description
@@ -444,7 +444,7 @@ const ProposalForm = () => {
                                         Each field must contain a maximum of 250 characters, including spaces.
                                     </h4>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Executive Summary <span className="text-red-500">*</span>
@@ -458,7 +458,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Business Opportunity <span className="text-red-500">*</span>
@@ -472,7 +472,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Market Analysis <span className="text-red-500">*</span>
@@ -486,7 +486,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Unique Value Proposition <span className="text-red-500">*</span>
@@ -500,7 +500,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Products/Services Offered <span className="text-red-500">*</span>
@@ -514,7 +514,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Revenue Model <span className="text-red-500">*</span>
@@ -528,7 +528,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Marketing Strategy <span className="text-red-500">*</span>
@@ -542,7 +542,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Team <span className="text-red-500">*</span>
@@ -556,7 +556,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Financial Projections <span className="text-red-500">*</span>
@@ -570,7 +570,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Timeline <span className="text-red-500">*</span>
@@ -584,7 +584,7 @@ const ProposalForm = () => {
                                         </div>
                                     </div>
 
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-3">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-3">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Risks and Mitigation <span className="text-red-500">*</span>
@@ -717,7 +717,7 @@ const ProposalForm = () => {
                                         I hereby certify that the information provided in this proposal is accurate to
                                         the best of my knowledge
                                     </h4>
-                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-center gap-4 pt-4">
+                                    <div className="block sm:flex space-y-3 sm:space-y-0 items-start gap-4 pt-4">
                                         <div className="input-box w-full">
                                             <h4 className="text-[14px]">
                                                 Full Names as Signature <span className="text-red-600">*</span>

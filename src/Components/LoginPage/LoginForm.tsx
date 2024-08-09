@@ -25,7 +25,7 @@ function LoginForm() {
                         </div>
 
                         <div className="col lg:flex justify-end">
-                            <form className="register_form w-full lg:w-[400px] h-[380px] px-6 py-6 bg-white rounded">
+                            <form className="register_form w-full h-full lg:w-[400px] px-6 py-6 bg-white rounded">
                                 <div className="form-head">
                                     <h3 className="text-[16px]">Sign In</h3>
                                 </div>
@@ -37,13 +37,19 @@ function LoginForm() {
                                             type="email"
                                             placeholder="johndoe@mail.com"
                                         />
-                                        <div
-                                            className="absolute inset-y-0 right-0 top-1 text-red-600 flex items-center pr-3 pointer-events-none">
-                                            <MdOutlineErrorOutline size={20}/>
-                                        </div>
                                     </div>
 
-                                    <span className="text-[12px] text-red-600">Email is not valid</span>
+                                    <div className="flex items-center gap-1 mt-2">
+                                        <svg fill="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                             width="9"
+                                             height="9">
+                                            <path
+                                                d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path>
+                                        </svg>
+                                        <div
+                                            className="text-[12px] text-red-600">Email is not valid
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="block mt-4">
@@ -51,7 +57,7 @@ function LoginForm() {
                                     <div className="relative">
                                         <input
                                             id="password"
-                                            className="mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
+                                            className="valid_input mt-1 rounded w-full py-1 px-3 text-[#ABABAB] text-[12px] focus:outline-none focus:border-primary focus:ring focus:ring-transparent"
                                             type={showPassword ? 'text' : 'password'}
                                             placeholder={showPassword ? '12345' : '********'}
                                         />
@@ -63,6 +69,18 @@ function LoginForm() {
                                             >
                                                 {showPassword ? 'Hide' : 'Show'}
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-1 mt-2">
+                                        <svg fill="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                             width="9"
+                                             height="9">
+                                            <path
+                                                d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575ZM8 5a.75.75 0 0 0-.75.75v2.5a.75.75 0 0 0 1.5 0v-2.5A.75.75 0 0 0 8 5Zm1 6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path>
+                                        </svg>
+                                        <div
+                                            className="text-[12px] text-red-600">Please enter your password
                                         </div>
                                     </div>
 

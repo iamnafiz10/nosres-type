@@ -9,6 +9,15 @@ body {
     overflow-x: hidden;
 }
 
+:where(.css-dev-only-do-not-override-3rel02).ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #4D7FB8;
+    border-color: #4D7FB8;
+}
+
+:where(.css-dev-only-do-not-override-3rel02) .ant-checkbox:hover .ant-checkbox-inner::after {
+    background-color: #4D7FB8; /* Custom background color on hover */
+}
+
 header p {
     font-size: 12px !important;
     color: #828D9E !important;
