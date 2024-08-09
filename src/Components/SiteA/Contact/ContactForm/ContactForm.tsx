@@ -100,13 +100,13 @@ const ContactForm = () => {
                             <h4 className="mt-2 text-[14px]">
                                 Our application is a work in progress. Consequently, if you encounter any issues or
                                 have suggestions for improvements, please <span
-                                className="text-blue-500 cursor-pointer underline">report them here</span>.
+                                className="text-primary cursor-pointer underline">report them here</span>.
                                 Your feedback is
                                 valuable in helping us make our application better.
                             </h4>
 
 
-                            <h1 className="mb-1 mt-3 pb-3 font-semibold text-[16px]">
+                            <h1 className="mb-1 mt-5 pb-3 font-semibold text-[16px]">
                                 DO YOU NEED HELP?
                             </h1>
                             <hr/>
