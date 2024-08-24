@@ -173,50 +173,28 @@ function Header() {
     };
 
     const [isVisible, setIsVisible] = useState(true);
-
-    const handleDismiss = () => {
-        setIsVisible(false); // This will hide the acc_wrap div
-    };
     // Check if the current path is "sitea-contact"
     const shouldDisplay = location.pathname === "/sitea-contact";
     return (
         <>
             <section id="header-section" className="relative">
                 {isVisible && shouldDisplay && (
-                    <div className="acc_wrap fixed top-0 w-full pt-[0px]">
+                    <div className="acc_wrap w-full fixed top-0 pt-[0px]">
                         <div
-                            className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
-                            <div
-                                aria-hidden="true"
-                                className="absolute left-[max(-7rem,calc(50%-52rem))] bottom-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
-                            >
-                                <div
-                                    className="bg-white"
-                                />
-                            </div>
-                            <div
-                                aria-hidden="true"
-                                className="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
-                            >
-                                <div
-                                    className="bg-white"
-                                />
-                            </div>
-                            <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
-                                <h4 className="text-[14px] leading-6 text-gray-900">
-                                    GeneriCon 2023 in on June 7 – 9 in Denver.
-                                </h4>
-                                <div className="flex cursor-pointer items-center gap-1 text-[14px] font-semibold">
-                                    Get your ticket
-                                    <FaArrowRightLong size={16}/>
+                            className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-50 py-2.5">
+                            <div className="container">
+                                <div className="flex items-center justify-center">
+                                    <div className="flex items-center gap-x-1 gap-y-2 pl-1">
+                                        <h4 className="text-[14px] leading-6 text-gray-900">
+                                            GeneriCon 2023 in on June 7 – 9 in Denver.
+                                        </h4>
+                                        <div
+                                            className="flex cursor-pointer items-center gap-1 text-[14px] font-semibold">
+                                            Get your ticket
+                                            <FaArrowRightLong size={16}/>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="flex flex-1 justify-end">
-                                <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
-                                        onClick={handleDismiss}>
-                                    <span className="sr-only">Dismiss</span>
-                                    <RxCross1 className="h-5 w-5 text-gray-900"/>
-                                </button>
                             </div>
                         </div>
                     </div>
