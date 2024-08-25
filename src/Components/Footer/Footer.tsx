@@ -327,13 +327,13 @@ function Footer() {
                             <div className="container flex items-center justify-center">
                                 <div className="flex items-center justify-center w-full">
                                     <div className="flex items-center gap-x-1 gap-y-2">
-                                        <h4 className="text-[14px] leading-6 text-gray-900">
+                                        <h4 className="text-[10px] sm:text-[14px] leading-6 text-gray-900">
                                             GeneriCon 2023 in on June 7 – 9 in Denver.
                                         </h4>
                                         <div
-                                            className="flex cursor-pointer items-center gap-1 text-[14px] font-semibold">
+                                            className="flex cursor-pointer items-center gap-1 text-[10px] sm:text-[14px] font-semibold">
                                             Get your ticket
-                                            <FaArrowRightLong size={16}/>
+                                            <FaArrowRightLong size={15}/>
                                         </div>
                                     </div>
                                 </div>

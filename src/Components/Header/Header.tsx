@@ -189,17 +189,17 @@ function Header() {
                 {isVisible && shouldDisplay && (
                     <div className="acc_wrap z-50 w-full fixed top-0 pt-[0px]">
                         <div
-                            className="relative z-30 isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-white py-2.5">
+                            className="relative z-30 isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-100 py-2.5">
                             <div className="container flex items-center justify-center">
                                 <div className="flex items-center justify-center w-full">
                                     <div className="flex items-center gap-x-1 gap-y-2">
-                                        <h4 className="text-[14px] leading-6 text-gray-900">
+                                        <h4 className="text-[10px] sm:text-[14px] leading-6 text-gray-900">
                                             GeneriCon 2023 in on June 7 – 9 in Denver.
                                         </h4>
                                         <div
-                                            className="flex cursor-pointer items-center gap-1 text-[14px] font-semibold">
+                                            className="flex cursor-pointer items-center gap-1 text-[10px] sm:text-[14px] font-semibold">
                                             Get your ticket
-                                            <FaArrowRightLong size={16}/>
+                                            <FaArrowRightLong size={15}/>
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@ function Header() {
                     </div>
                 )}
                 <header
-                    className={`py-4 lg:py-2 flex ${isVisible ? "top-[40px]" : ""} items-center h-[50px] shadow-sm bg-white w-full lg:relative z-50`}
+                    className={`py-4 lg:py-2 flex ${isVisible ? "top-[44px]" : ""} items-center h-[50px] shadow-sm bg-white w-full lg:relative z-50`}
                     style={{
                         position: 'fixed',
                     }}
@@ -904,17 +904,17 @@ function Header() {
                 </div>
 
                 {isVisibleTwo && shouldDisplayTwo && (
-                    <div className={`acc_wrap w-full absolute ${isVisible ? "top-[90px]" : "top-[50px]"} pt-[0px]`}>
+                    <div className={`acc_wrap w-full absolute ${isVisible ? "top-[94px]" : "top-[50px]"} pt-[0px]`}>
                         <div
                             className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-white py-2.5">
                             <div className="container">
-                                <div className="flex items-center justify-center mr-[23px]">
+                                <div className="flex items-center justify-center mr-0 sm:mr-[23px]">
                                     <div className="flex items-center gap-x-1 gap-y-2">
-                                        <h4 className="text-[14px] leading-6 text-gray-900">
+                                        <h4 className="text-[10px] sm:text-[14px] leading-6 text-gray-900">
                                             GeneriCon 2023 in on June 7 – 9 in Denver.
                                         </h4>
                                         <div
-                                            className="flex cursor-pointer items-center gap-1 text-[14px] font-semibold">
+                                            className="flex cursor-pointer items-center gap-1 text-[10px] sm:text-[14px] font-semibold">
                                             Get your ticket
                                             <FaArrowRightLong size={16}/>
                                         </div>
