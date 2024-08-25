@@ -173,8 +173,19 @@ function Header() {
     };
 
     const [isVisible, setIsVisible] = useState(true);
+    const handleDismiss = () => {
+        setIsVisible(false); // This will hide the acc_wrap div
+    };
     // Check if the current path is "sitea-contact"
     const shouldDisplay = location.pathname === "/sitea-contact";
+
+
+    const [isVisibleTwo, setIsVisibleTwo] = useState(true);
+    const handleDismissTwo = () => {
+        setIsVisibleTwo(false); // This will hide the acc_wrap div
+    };
+    // Check if the current path is "sitea-contact"
+    const shouldDisplayTwo = location.pathname === "/sitea-contact";
     return (
         <>
             <section id="header-section" className="relative">
@@ -182,9 +193,9 @@ function Header() {
                     <div className="acc_wrap w-full fixed top-0 pt-[0px]">
                         <div
                             className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-50 py-2.5">
-                            <div className="container">
-                                <div className="flex items-center justify-center">
-                                    <div className="flex items-center gap-x-1 gap-y-2 pl-1">
+                            <div className="container flex items-center justify-center">
+                                <div className="flex items-center justify-center w-full">
+                                    <div className="flex items-center gap-x-1 gap-y-2">
                                         <h4 className="text-[14px] leading-6 text-gray-900">
                                             GeneriCon 2023 in on June 7 – 9 in Denver.
                                         </h4>
@@ -194,6 +205,13 @@ function Header() {
                                             <FaArrowRightLong size={16}/>
                                         </div>
                                     </div>
+                                </div>
+                                <div className="float-right flex items-center justify-end pr-1">
+                                    <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
+                                            onClick={handleDismiss}>
+                                        <span className="sr-only">Dismiss</span>
+                                        <RxCross1 className="h-5 w-5 text-gray-900"/>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -887,6 +905,28 @@ function Header() {
                         </Modal>
                     </div>
                 </div>
+
+                {isVisibleTwo && shouldDisplayTwo && (
+                    <div className={`acc_wrap w-full fixed ${isVisible ? "top-[90px]" : "top-[50px]"} pt-[0px]`}>
+                        <div
+                            className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-50 py-2.5">
+                            <div className="container">
+                                <div className="flex items-center justify-center mr-[23px]">
+                                    <div className="flex items-center gap-x-1 gap-y-2">
+                                        <h4 className="text-[14px] leading-6 text-gray-900">
+                                            GeneriCon 2023 in on June 7 – 9 in Denver.
+                                        </h4>
+                                        <div
+                                            className="flex cursor-pointer items-center gap-1 text-[14px] font-semibold">
+                                            Get your ticket
+                                            <FaArrowRightLong size={16}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </section>
         </>
     )

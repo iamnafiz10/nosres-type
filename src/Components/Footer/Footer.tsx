@@ -326,7 +326,7 @@ function Footer() {
                             className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-50 py-2.5">
                             <div className="container flex items-center justify-center">
                                 <div className="flex items-center justify-center w-full">
-                                    <div className="flex items-center gap-x-1 gap-y-2 pl-1">
+                                    <div className="flex items-center gap-x-1 gap-y-2">
                                         <h4 className="text-[14px] leading-6 text-gray-900">
                                             GeneriCon 2023 in on June 7 – 9 in Denver.
                                         </h4>
