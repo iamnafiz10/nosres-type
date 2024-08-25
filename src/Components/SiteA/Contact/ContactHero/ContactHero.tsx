@@ -1,13 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import heroImage from "../../../../assets/images/sitea/contact-bnner.jpg";
-import {FaArrowRightLong} from "react-icons/fa6";
-import {useLocation} from "react-router-dom";
 
 const ContactHero = () => {
-    const location = useLocation();
-    const [isVisible, setIsVisible] = useState(true);
-    // Check if the current path is "sitea-contact"
-    const shouldDisplay = location.pathname === "/sitea-contact";
     return (
         <>
             <section id="banner-section"

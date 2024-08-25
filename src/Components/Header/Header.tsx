@@ -181,18 +181,15 @@ function Header() {
 
 
     const [isVisibleTwo, setIsVisibleTwo] = useState(true);
-    const handleDismissTwo = () => {
-        setIsVisibleTwo(false); // This will hide the acc_wrap div
-    };
     // Check if the current path is "sitea-contact"
     const shouldDisplayTwo = location.pathname === "/sitea-contact";
     return (
         <>
             <section id="header-section" className="relative">
                 {isVisible && shouldDisplay && (
-                    <div className="acc_wrap w-full fixed top-0 pt-[0px]">
+                    <div className="acc_wrap z-50 w-full fixed top-0 pt-[0px]">
                         <div
-                            className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-50 py-2.5">
+                            className="relative z-30 isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-white py-2.5">
                             <div className="container flex items-center justify-center">
                                 <div className="flex items-center justify-center w-full">
                                     <div className="flex items-center gap-x-1 gap-y-2">
@@ -907,9 +904,9 @@ function Header() {
                 </div>
 
                 {isVisibleTwo && shouldDisplayTwo && (
-                    <div className={`acc_wrap w-full fixed ${isVisible ? "top-[90px]" : "top-[50px]"} pt-[0px]`}>
+                    <div className={`acc_wrap w-full absolute ${isVisible ? "top-[90px]" : "top-[50px]"} pt-[0px]`}>
                         <div
-                            className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-gray-50 py-2.5">
+                            className="relative isolate w-full flex items-center text-left justify-start gap-x-6 overflow-hidden bg-white py-2.5">
                             <div className="container">
                                 <div className="flex items-center justify-center mr-[23px]">
                                     <div className="flex items-center gap-x-1 gap-y-2">
